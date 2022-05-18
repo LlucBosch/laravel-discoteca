@@ -1,0 +1,39 @@
+.contact{
+    background-color: black;
+    min-height: 80vh;
+    padding: 0 10%;
+    width: 80%;
+
+    .contact-title{
+        padding-top: 2rem;
+        padding-bottom: 4rem;
+        text-align: center;
+    
+        h2{
+            font-size: 3rem;
+        }
+    }
+    
+    .contact-info{
+    
+        .contact-info-text{
+    
+            margin-bottom: 2rem;
+    
+            span{
+                font-size: 1.5rem;
+            }
+    
+            svg{
+                margin-right: 1rem;
+                width: 2rem;
+    
+                path{
+                    fill: hsl(0, 0%, 100%);
+                }
+            }
+        }
+    }
+}
+
+
