@@ -29,10 +29,6 @@ Route::get('/faqs', function () {
     return view('front.pages.faqs.index');
 });
 
-Route::get('/panel', function () {
-    return view('admin.pages.panel.index');
-});
-
 Route::get('/purchase', function () {
     return view('front.pages.purchase.index');
 });
@@ -43,4 +39,8 @@ Route::get('/ticket', function () {
 
 Route::get('/tickets', function () {
     return view('front.pages.tickets.index');
+});
+
+Route::get('/usuarios', function () {
+    return view('admin.pages.users.index');
 });

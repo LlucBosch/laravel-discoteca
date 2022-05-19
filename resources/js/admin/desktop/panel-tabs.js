@@ -1,4 +1,4 @@
-export let renderTabsTicket = () => {
+export let renderPanelTabs = () => {
 
     // for desktop
     let tabs = document.querySelectorAll(".tab");
@@ -28,23 +28,5 @@ export let renderTabsTicket = () => {
         });
 
     });
-
-
-    // for mobile
-    let selectTicket = document.querySelector(".select-ticket")
-
-    selectTicket.addEventListener("change", () => {
-
-        tabRelateds.forEach(tabRelated => {
-
-            tabRelated.classList.remove("active");
-
-            if(selectTicket.value == tabRelated.dataset.number) {
-                tabRelated.classList.add("active");
-            }
-            
-        });
-
-    })
 
 }

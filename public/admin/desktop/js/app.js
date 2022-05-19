@@ -45,39 +45,6 @@ var renderCkeditor = function renderCkeditor() {
 
 /***/ }),
 
-/***/ "./resources/js/admin/desktop/faqs.js":
-/*!********************************************!*\
-  !*** ./resources/js/admin/desktop/faqs.js ***!
-  \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "renderFaqs": () => (/* binding */ renderFaqs)
-/* harmony export */ });
-var renderFaqs = function renderFaqs() {
-  var faqs = document.querySelectorAll(".faq");
-  var answers = document.querySelectorAll(".answer");
-  faqs.forEach(function (faq) {
-    faq.addEventListener("click", function () {
-      answers.forEach(function (answer) {
-        answer.classList.remove("active");
-
-        if (faq.dataset.number == answer.dataset.number) {
-          answer.classList.toggle("active");
-        }
-      });
-      faqs.forEach(function (faq) {
-        faq.classList.remove("active");
-      });
-      faq.classList.toggle("active");
-    });
-  });
-};
-
-/***/ }),
-
 /***/ "./resources/js/admin/desktop/form.js":
 /*!********************************************!*\
   !*** ./resources/js/admin/desktop/form.js ***!
@@ -215,55 +182,18 @@ var renderPanelFilters = function renderPanelFilters() {
 
 /***/ }),
 
-/***/ "./resources/js/admin/desktop/plus-minus.js":
+/***/ "./resources/js/admin/desktop/panel-tabs.js":
 /*!**************************************************!*\
-  !*** ./resources/js/admin/desktop/plus-minus.js ***!
+  !*** ./resources/js/admin/desktop/panel-tabs.js ***!
   \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "renderPlusMinus": () => (/* binding */ renderPlusMinus)
+/* harmony export */   "renderPanelTabs": () => (/* binding */ renderPanelTabs)
 /* harmony export */ });
-var renderPlusMinus = function renderPlusMinus() {
-  // sumar y restar numero de ticket que quieres comprar
-  var minusButtons = document.querySelectorAll(".minus");
-  var plusButtons = document.querySelectorAll(".plus");
-  plusButtons.forEach(function (plusButton) {
-    plusButton.addEventListener('click', function () {
-      // plusButton es el boton que hemos presionado de los plusButtons, al hacerle un closet se guardará
-      // en la variable el elemento padre en concreto de ese boton que tiene la clase .plus-minus-input
-      // despues seleccionaremos el input de ese elemento en concreto con el querySelector
-      var buttonPlusMinusInput = plusButton.closest(".plus-minus-button").querySelector('.plus-minus-input');
-      buttonPlusMinusInput.value = parseInt(buttonPlusMinusInput.value) + 1;
-    });
-  });
-  minusButtons.forEach(function (minusButton) {
-    minusButton.addEventListener('click', function () {
-      var buttonPlusMinusInput = minusButton.closest(".plus-minus-button").querySelector('.plus-minus-input');
-
-      if (buttonPlusMinusInput.value > 1) {
-        buttonPlusMinusInput.value = parseInt(buttonPlusMinusInput.value) - 1;
-      }
-    });
-  });
-};
-
-/***/ }),
-
-/***/ "./resources/js/admin/desktop/tabs-ticket.js":
-/*!***************************************************!*\
-  !*** ./resources/js/admin/desktop/tabs-ticket.js ***!
-  \***************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "renderTabsTicket": () => (/* binding */ renderTabsTicket)
-/* harmony export */ });
-var renderTabsTicket = function renderTabsTicket() {
+var renderPanelTabs = function renderPanelTabs() {
   // for desktop
   var tabs = document.querySelectorAll(".tab");
   var tabRelateds = document.querySelectorAll(".tab-related");
@@ -280,17 +210,6 @@ var renderTabsTicket = function renderTabsTicket() {
         tab.classList.remove("active");
       });
       tab.classList.add("active");
-    });
-  }); // for mobile
-
-  var selectTicket = document.querySelector(".select-ticket");
-  selectTicket.addEventListener("change", function () {
-    tabRelateds.forEach(function (tabRelated) {
-      tabRelated.classList.remove("active");
-
-      if (selectTicket.value == tabRelated.dataset.number) {
-        tabRelated.classList.add("active");
-      }
     });
   });
 };
@@ -451,15 +370,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _menu_button_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./menu-button.js */ "./resources/js/admin/desktop/menu-button.js");
 /* harmony import */ var _panel_button_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./panel-button.js */ "./resources/js/admin/desktop/panel-button.js");
 /* harmony import */ var _panel_filters_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./panel-filters.js */ "./resources/js/admin/desktop/panel-filters.js");
-/* harmony import */ var _plus_minus_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./plus-minus.js */ "./resources/js/admin/desktop/plus-minus.js");
-/* harmony import */ var _tabs_ticket_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./tabs-ticket.js */ "./resources/js/admin/desktop/tabs-ticket.js");
-/* harmony import */ var _form_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./form.js */ "./resources/js/admin/desktop/form.js");
-/* harmony import */ var _notification_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./notification.js */ "./resources/js/admin/desktop/notification.js");
-/* harmony import */ var _upload_image_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./upload-image.js */ "./resources/js/admin/desktop/upload-image.js");
-/* harmony import */ var _ckeditor_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./ckeditor.js */ "./resources/js/admin/desktop/ckeditor.js");
-/* harmony import */ var _faqs_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./faqs.js */ "./resources/js/admin/desktop/faqs.js");
-
-
+/* harmony import */ var _panel_tabs_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./panel-tabs.js */ "./resources/js/admin/desktop/panel-tabs.js");
+/* harmony import */ var _form_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./form.js */ "./resources/js/admin/desktop/form.js");
+/* harmony import */ var _notification_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./notification.js */ "./resources/js/admin/desktop/notification.js");
+/* harmony import */ var _upload_image_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./upload-image.js */ "./resources/js/admin/desktop/upload-image.js");
+/* harmony import */ var _ckeditor_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ckeditor.js */ "./resources/js/admin/desktop/ckeditor.js");
 
 
 
@@ -471,13 +386,11 @@ __webpack_require__.r(__webpack_exports__);
 (0,_menu_button_js__WEBPACK_IMPORTED_MODULE_0__.renderMenuButton)();
 (0,_panel_button_js__WEBPACK_IMPORTED_MODULE_1__.renderPanelButton)();
 (0,_panel_filters_js__WEBPACK_IMPORTED_MODULE_2__.renderPanelFilters)();
-(0,_plus_minus_js__WEBPACK_IMPORTED_MODULE_3__.renderPlusMinus)();
-(0,_tabs_ticket_js__WEBPACK_IMPORTED_MODULE_4__.renderTabsTicket)();
-(0,_form_js__WEBPACK_IMPORTED_MODULE_5__.renderForm)();
-(0,_notification_js__WEBPACK_IMPORTED_MODULE_6__.notificationTransition)();
-(0,_upload_image_js__WEBPACK_IMPORTED_MODULE_7__.uploadImage)();
-(0,_ckeditor_js__WEBPACK_IMPORTED_MODULE_8__.renderCkeditor)();
-(0,_faqs_js__WEBPACK_IMPORTED_MODULE_9__.renderFaqs)();
+(0,_panel_tabs_js__WEBPACK_IMPORTED_MODULE_3__.renderPanelTabs)();
+(0,_form_js__WEBPACK_IMPORTED_MODULE_4__.renderForm)();
+(0,_notification_js__WEBPACK_IMPORTED_MODULE_5__.notificationTransition)();
+(0,_upload_image_js__WEBPACK_IMPORTED_MODULE_6__.uploadImage)();
+(0,_ckeditor_js__WEBPACK_IMPORTED_MODULE_7__.renderCkeditor)();
 })();
 
 /******/ })()
