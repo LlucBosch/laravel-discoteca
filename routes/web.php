@@ -44,3 +44,7 @@ Route::get('/tickets', function () {
 Route::get('/usuarios', function () {
     return view('admin.pages.users.index');
 });
+
+Route::get('/panelfaqs', function () {
+    return view('admin.pages.faqs.index');
+});

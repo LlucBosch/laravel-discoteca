@@ -1,24 +1,23 @@
-@extends('admin.layout.faqs')
+@extends('admin.layout.table_form')
 
 @section('form')
 
     <div class="panel-form">
-
-        <div class="tabs">
-            <div class="tab active" data-number="one">
-                <p>Contenido</p>
-            </div>
-            <div class="tab" data-number="two">
-                <p>Imagenes</p>
-            </div>
-            <div class="tab" data-number="three">
-                <p>Texto</p>
-            </div>
-        </div>
-
         <div class="panel-tabs-related">
             <div class="tab-related active" data-number="one">
                 <form>
+                    <div class="desktop-one-column">
+                        <div class="column">
+                            <div class="form-element">
+                                <div class="form-element-label">
+                                    <label>Nombre</label>
+                                </div>
+                                <div class="form-element-input">
+                                    <input type="text">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="desktop-one-column">
                         <div class="column">
                             <div class="form-element">
@@ -38,7 +37,7 @@
                                     <label>Respuesta</label>
                                 </div>
                                 <div class="form-element-input">
-                                    <input type="text">
+                                    <textarea name="textareackeditor" class="editor"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -99,17 +98,13 @@
         <table>
             <tr>
                 <th>Id</th>
-                <th>Nombre</th>
-                <th>Email</th>
-                <th>Usuario</th>
-                <th class="desktop-only">Contraseña</th>
+                <th>Pregunta</th>
+                <th>Respuesta</th>
             </tr>
             <tr>
                 <td>1</td>
-                <td>Lluc</td>
-                <td>lluc.bosch@gmail.com</td>
-                <td>lluc888</td>
-                <td class="desktop-only">ka******3!</td>
+                <td>¿Cuanto se tar...</td>
+                <td>Del centro al even...</td>
                 <td>
                     <div class="desktop-two-columns">
                         <div class="column">
@@ -133,10 +128,8 @@
             </tr>
             <tr>
                 <td>2</td>
-                <td>Lluc</td>
-                <td>lluc.bosch@gmail.com</td>
-                <td>lluc888</td>
-                <td class="desktop-only">ka******3!</td>
+                <td>¿Cuanto se tar...</td>
+                <td>Del centro al even...</td>
                 <td>
                     <div class="desktop-two-columns">
                         <div class="column">
@@ -160,10 +153,8 @@
             </tr>
             <tr>
                 <td>3</td>
-                <td>Lluc</td>
-                <td>lluc.bosch@gmail.com</td>
-                <td>lluc888</td>
-                <td class="desktop-only">ka******3!</td>
+                <td>¿Cuanto se tar...</td>
+                <td>Del centro al even...</td>
                 <td>
                     <div class="desktop-two-columns">
                         <div class="column">
@@ -187,10 +178,8 @@
             </tr>
             <tr>
                 <td>4</td>
-                <td>Lluc</td>
-                <td>lluc.bosch@gmail.com</td>
-                <td>lluc888</td>
-                <td class="desktop-only">ka******3!</td>
+                <td>¿Cuanto se tar...</td>
+                <td>Del centro al even...</td>
                 <td>
                     <div class="desktop-two-columns">
                         <div class="column">
