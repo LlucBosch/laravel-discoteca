@@ -1,11 +1,11 @@
 @extends('admin.layout.table_form')
 
 @section('form')
-
+    
     <div class="panel-form">
         <div class="panel-tabs-related">
             <div class="tab-related active" data-number="one">
-                <form>
+                <form class="admin-form">
                     <div class="desktop-one-column">
                         <div class="column">
                             <div class="form-element">
@@ -63,7 +63,7 @@
         <div class="panel-form-buttons">
             <div class="desktop-two-columns">
                 <div class="column">
-                    <button>
+                    <button class="button-clean-panel" data-url="{{route('faqs_create')}}">
                         <div class="svg-wrapper-1">
                             <div class="svg-wrapper">
                                 <svg style="width:24px;height:24px" viewBox="0 0 24 24">
@@ -72,7 +72,7 @@
                                 </svg>
                             </div>
                         </div>
-                        <span>Borrar</span>
+                        <span>Limpiar</span>
                     </button>
                 </div>
                 <div class="column">
@@ -98,109 +98,39 @@
         <table>
             <tr>
                 <th>Id</th>
-                <th>Pregunta</th>
-                <th>Respuesta</th>
+                <th>Nombre</th>
+                <th>Creado</th>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>¿Cuanto se tar...</td>
-                <td>Del centro al even...</td>
-                <td>
-                    <div class="desktop-two-columns">
-                        <div class="column">
-                            <div class="panel-button-table">
-                                <svg viewBox="0 0 24 24">
-                                    <path fill="currentColor"
-                                        d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
-                                </svg>
+
+            @if(isset($faqs))
+                @foreach($faqs as $faq_element)
+                    <tr>
+                        <td>{{$faq_element->id}}</td>
+                        <td>{{$faq_element->name}}</td>
+                        <td>{{$faq_element->created_at}}</td>
+                        <td>
+                            <div class="desktop-two-columns">
+                                <div class="column">
+                                    <div class="panel-button-table">
+                                        <svg viewBox="0 0 24 24">
+                                            <path fill="currentColor"
+                                                d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="panel-button-table">
+                                        <svg viewBox="0 0 24 24">
+                                            <path fill="currentColor"
+                                                d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+                                        </svg>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="column">
-                            <div class="panel-button-table">
-                                <svg viewBox="0 0 24 24">
-                                    <path fill="currentColor"
-                                        d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>¿Cuanto se tar...</td>
-                <td>Del centro al even...</td>
-                <td>
-                    <div class="desktop-two-columns">
-                        <div class="column">
-                            <div class="panel-button-table">
-                                <svg viewBox="0 0 24 24">
-                                    <path fill="currentColor"
-                                        d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="panel-button-table">
-                                <svg viewBox="0 0 24 24">
-                                    <path fill="currentColor"
-                                        d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>¿Cuanto se tar...</td>
-                <td>Del centro al even...</td>
-                <td>
-                    <div class="desktop-two-columns">
-                        <div class="column">
-                            <div class="panel-button-table">
-                                <svg viewBox="0 0 24 24">
-                                    <path fill="currentColor"
-                                        d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="panel-button-table">
-                                <svg viewBox="0 0 24 24">
-                                    <path fill="currentColor"
-                                        d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>¿Cuanto se tar...</td>
-                <td>Del centro al even...</td>
-                <td>
-                    <div class="desktop-two-columns">
-                        <div class="column">
-                            <div class="panel-button-table">
-                                <svg viewBox="0 0 24 24">
-                                    <path fill="currentColor"
-                                        d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="panel-button-table">
-                                <svg viewBox="0 0 24 24">
-                                    <path fill="currentColor"
-                                        d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
+                        </td>
+                    </tr>
+                @endforeach
+            @endif
         </table>
     </div>
 @endsection
