@@ -119,11 +119,14 @@ class FaqController extends Controller
         ]);
     }
 
+
+    // para usar el validador tenemos que poner el objetoRequest que queramos usar 
+    // dentro del método store
     public function store(FaqRequest $request)
     {            
         
 
-        $user = $this->user->updateOrCreate([
+        $faq = $this->faq->updateOrCreate([
                 'id' => request('id')],[
                 'name' => request('name'),
                 'title' => request('title'),
@@ -132,7 +135,8 @@ class FaqController extends Controller
                 'active' => 1,
         ]);
             
-        $view = View::make('admin.faqs.index')
+        $view = View::make('admin.pages.faqs.index')
+        // este with pasa dos variables a la vista html
         ->with('faqs', $this->faq->where('active', 1)->get())
         ->with('faq', $faq)
         ->renderSections();        

@@ -89,6 +89,10 @@ export let renderForm = () => {
                 let data = new FormData(form);
                 let url = form.action;
 
+                for (var pair of data.entries()) {
+                    console.log(pair[0]+ ', ' + pair[1]); 
+                }
+
                 /*	
                     En el siguiente valor estamos capturando los datos del ckeditor y se los añadimos a los datos
                     del formData. 
