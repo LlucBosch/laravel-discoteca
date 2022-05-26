@@ -993,3 +993,36 @@ input[type=file] {
 .tab-related.active {
   display: block;
 }
+
+.delete-item {
+  position: fixed;
+  bottom: 45vh;
+  left: 45vh;
+  text-align: center;
+  width: 35%;
+  height: 8rem;
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
+  border: hsl(0deg, 0%, 50%) solid 0.5rem;
+  opacity: 0;
+  transition: 0.4s;
+  z-index: -1;
+}
+.delete-item p {
+  color: black;
+  margin-top: 2%;
+  font-size: 1.8rem;
+}
+.delete-item button {
+  background: none;
+  width: 4rem;
+  font-size: 1.5rem;
+  margin-top: 0.6rem;
+  cursor: pointer;
+  background-color: hsl(0deg, 1%, 65%);
+}
+.delete-item.active {
+  opacity: 1;
+  transition: 1s;
+  z-index: 5000;
+}

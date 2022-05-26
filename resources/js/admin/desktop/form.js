@@ -5,10 +5,14 @@ export let renderForm = () => {
     let createButton = document.querySelector('.button-clean-panel');
     let forms = document.querySelectorAll('.admin-form');
 
+
+    document.addEventListener("loadForm",( event =>{
+        formContainer.innerHTML = event.detail.form;
+    }), {once: true});
+
     document.addEventListener("renderFormModules",( event =>{
         renderForm();
     }), {once: true});
-
     
     if(createButton){
 

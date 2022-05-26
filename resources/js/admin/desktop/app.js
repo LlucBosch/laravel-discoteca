@@ -6,7 +6,8 @@ import {renderForm} from "./form.js";
 import { notificationTransition } from "./notification.js";
 import {uploadImage} from "./upload-image.js";
 import {renderCkeditor} from "./ckeditor.js";
-import {renderTable} from "./table.js"
+import {renderTable} from "./table.js";
+import {renderDeleteBox} from "./modalDelete.js";
 
 
 renderMenuButton();
@@ -18,3 +19,4 @@ notificationTransition();
 uploadImage();
 renderCkeditor();
 renderTable();
+renderDeleteBox();

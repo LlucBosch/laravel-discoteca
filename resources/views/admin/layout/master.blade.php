@@ -27,6 +27,8 @@
         @include("admin/components/notification")
     </main>
 
+    @include("admin.components.delete")
+
     @include("admin.layout.partials.footer_fixed")
 
     @include("admin.layout.partials.js")
