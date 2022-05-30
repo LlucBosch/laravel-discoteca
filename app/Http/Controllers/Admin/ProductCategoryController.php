@@ -8,23 +8,21 @@ use App\Models\ProductCategory;
 use App\Http\Requests\Admin\ProductCategoryRequest;
 use Debugbar;
 
-
 class ProductCategoryController extends Controller
 {
+    protected $product_category;
 
-    protected $category;
-
-    public function __construct(Category $category)
+    public function __construct(ProductCategory $product_category)
     {
-        $this->category = $category;
+        $this->product_category = $product_category;
     }
     
     public function index()
     {
 
-        $view = View::make('admin.pages.categories.index')
-                ->with('category', $this->category)
-                ->with('categories', $this->category->where('active', 1)->get());
+        $view = View::make('admin.pages.product_categories.index')
+                ->with('category', $this->product_category)
+                ->with('categories', $this->product_category->where('active', 1)->get());
                 
         if(request()->ajax()) {
             
@@ -42,8 +40,8 @@ class ProductCategoryController extends Controller
     public function create()
     {
 
-       $view = View::make('admin.pages.categories.index')
-        ->with('category', $this->category)
+       $view = View::make('admin.pages.product_categories.index')
+        ->with('category', $this->product_category)
         ->renderSections();
         Debugbar::info($view['form']);
 
@@ -55,10 +53,10 @@ class ProductCategoryController extends Controller
 
     // para usar el validador tenemos que poner el objetoRequest que queramos usar 
     // dentro del método store
-    public function store(CategoryRequest $request)
+    public function store(ProductCategoryRequest $request)
     {            
 
-        $category = $this->category->updateOrCreate([
+        $category = $this->product_category->updateOrCreate([
                 'id' => request('id')],[
                 'name' => request('name'),
                 'title' => request('title'),
@@ -66,10 +64,10 @@ class ProductCategoryController extends Controller
                 'active' => 1,
         ]);
             
-        $view = View::make('admin.pages.categories.index')
+        $view = View::make('admin.pages.product_categories.index')
         // este with pasa dos variables a la vista html
-        ->with('categories', $this->category->where('active', 1)->get())
-        ->with('category', $this->category)
+        ->with('categories', $this->product_category->where('active', 1)->get())
+        ->with('category', $this->product_category)
         ->renderSections();        
 
         return response()->json([
@@ -79,11 +77,11 @@ class ProductCategoryController extends Controller
         ]);
     }
 
-    public function edit(Category $category)
+    public function edit(ProductCategory $category)
     {
-        $view = View::make('admin.pages.categories.index')
+        $view = View::make('admin.pages.product_categories.index')
         ->with('category', $category)
-        ->with('categories', $this->category->where('active', 1)->get());   
+        ->with('categories', $this->product_category->where('active', 1)->get());   
         
         if(request()->ajax()) {
 
@@ -97,18 +95,18 @@ class ProductCategoryController extends Controller
         return $view;
     }
 
-    public function show(Category $category){
+    public function show(ProductCategory $category){
 
     }
 
-    public function destroy(Category $category)
+    public function destroy(ProductCategory $category)
     {
         $category->active = 0;
         $category->save();
 
-        $view = View::make('admin.pages.categories.index')
-            ->with('category', $this->category)
-            ->with('categories', $this->category->where('active', 1)->get())
+        $view = View::make('admin.pages.product_categories.index')
+            ->with('category', $this->product_category)
+            ->with('categories', $this->product_category->where('active', 1)->get())
             ->renderSections();
         
         return response()->json([

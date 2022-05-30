@@ -6,7 +6,7 @@
         <div class="panel-form">
             <div class="panel-tabs-related">
                 <div class="tab-related active" data-number="one">
-                    <form class="admin-form" action="{{route("categories_store")}}"> 
+                    <form class="admin-form" action="{{route("product_categories_store")}}"> 
                         <input type="hidden" name="id">
                         <div class="desktop-one-column">
                             <div class="column">
@@ -53,7 +53,7 @@
             <div class="panel-form-buttons">
                 <div class="desktop-two-columns">
                     <div class="column">
-                        <button class="button-clean-panel" data-url="{{route('categories_create')}}">
+                        <button class="button-clean-panel" data-url="{{route('product_categories_create')}}">
                             <div class="svg-wrapper-1">
                                 <div class="svg-wrapper">
                                     <svg style="width:24px;height:24px" viewBox="0 0 24 24">
@@ -66,7 +66,7 @@
                         </button>
                     </div>
                     <div class="column">
-                        <button class="button-save-panel" data-url="{{route('categories_store')}}">
+                        <button class="button-save-panel" data-url="{{route('product_categories_store')}}">
                             <div class="svg-wrapper-1">
                                 <div class="svg-wrapper">
                                     <svg style="width:24px;height:24px" viewBox="0 0 24 24">
@@ -103,18 +103,17 @@
                             <div class="desktop-two-columns">
                                 <div class="column">
                                     <div class="panel-button-table" >
-                                        <div class="edit-button" data-url="{{route('categories_edit', ['category' => $category_element->id])}}">
+                                        <div class="edit-button" data-url="{{route('product_categories_edit', ['category' => $category_element->id])}}">
                                             <svg viewBox="0 0 24 24">
                                                 <path fill="currentColor"
                                                     d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
                                             </svg>                                            
                                         </div>
-
                                     </div>
                                 </div>
                                 <div class="column">
                                     <div class="panel-button-table" >
-                                        <div class="delete-button" data-url="{{route('categories_destroy', ['category' => $category_element->id])}}">
+                                        <div class="delete-button" data-url="{{route('product_categories_destroy', ['category' => $category_element->id])}}">
                                             <svg viewBox="0 0 24 24">
                                                 <path fill="currentColor"
                                                     d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
