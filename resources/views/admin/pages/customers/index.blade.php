@@ -2,80 +2,85 @@
 
 @section('form')
     
-    @if(isset($product))
+    @if(isset($customer))
         <div class="panel-form">
             <div class="panel-tabs-related">
                 <div class="tab-related active" data-number="one">
-                    <form class="admin-form" action="{{route("products_store")}}"> 
-                        <input type="hidden" name="id">
-                        <div class="desktop-one-column">
+                    <form action="{{route("customers_store")}}">
+                        <div class="desktop-two-columns mobile-one-column">
                             <div class="column">
                                 <div class="form-element">
                                     <div class="form-element-label">
                                         <label>Nombre</label>
                                     </div>
                                     <div class="form-element-input">
-                                        <input type="text" name="name" value="{{isset($product->name) ? $product->name : ''}}">
+                                        <input type="text" name="name" value="{{isset($customer->name) ? $customer->name : ''}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="form-element">
+                                    <div class="form-element-label">
+                                        <label>Apellidos</label>
+                                    </div>
+                                    <div class="form-element-input">
+                                        <input type="text" name="surnames" value="{{isset($customer->surnames) ? $customer->surnames : ''}}">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="desktop-one-column">
+                        <div class="desktop-two-columns mobile-one-column">
                             <div class="column">
                                 <div class="form-element">
                                     <div class="form-element-label">
-                                        <label>Título</label>
+                                        <label>Teléfono</label>
                                     </div>
                                     <div class="form-element-input">
-                                        <input type="text" name="title" value="{{isset($product->title) ? $product->title :''}}">
+                                        <input type="number" name="phone" value="{{isset($customer->phone) ? $customer->phone : ''}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="form-element">
+                                    <div class="form-element-label">
+                                        <label>Email</label>
+                                    </div>
+                                    <div class="form-element-input">
+                                        <input type="email" name="email" value="{{isset($customer->email) ? $customer->email : ''}}">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="desktop-one-column">
+                        <div class="desktop-two-columns mobile-one-column">
                             <div class="column">
                                 <div class="form-element">
                                     <div class="form-element-label">
-                                        <label>Descripción</label>
+                                        <label>Ciudad</label>
                                     </div>
                                     <div class="form-element-input">
-                                        <textarea name="description" class="editor">{{isset($product->description) ? $product->description:''}}</textarea>
+                                        <input type="text" name="city" value="{{isset($customer->city) ? $customer->city : ''}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="form-element">
+                                    <div class="form-element-label">
+                                        <label>Código postal</label>
+                                    </div>
+                                    <div class="form-element-input">
+                                        <input type="number" name="postalcode" value="{{isset($customer->postalcode) ? $customer->postalcode : ''}}">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="desktop-one-column">
+                        <div class="desktop-one-column mobile-one-column">
                             <div class="column">
                                 <div class="form-element">
                                     <div class="form-element-label">
-                                        <label>Precio</label>
+                                        <label>Dirección</label>
                                     </div>
                                     <div class="form-element-input">
-                                        <input type="number" name="price" value="{{isset($product->price) ? $product->price : ''}}">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="desktop-one-column">
-                            <div class="column">
-                                <div class="form-element">
-                                    <div class="form-element-label">
-                                        <label>Categoría</label>
-                                    </div>
-                                    <div class="form-element-input">
-                                        <select name="categories"></select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="desktop-one-column">
-                            <div class="column">
-                                <div class="form-element">
-                                    <div class="form-element-label">
-                                        <label>Características</label>
-                                    </div>
-                                    <div class="form-element-input">
-                                        <textarea name="features" class="editor">{{isset($product->features) ? $product->features:''}}</textarea>
+                                        <input type="text" name="direction" value="{{isset($customer->direction) ? $customer->direction : ''}}">
                                     </div>
                                 </div>
                             </div>
@@ -101,7 +106,7 @@
             <div class="panel-form-buttons">
                 <div class="desktop-two-columns">
                     <div class="column">
-                        <button class="button-clean-panel" data-url="{{route('products_create')}}">
+                        <button class="button-clean-panel" data-url="{{route('customers_create')}}">
                             <div class="svg-wrapper-1">
                                 <div class="svg-wrapper">
                                     <svg style="width:24px;height:24px" viewBox="0 0 24 24">
@@ -114,7 +119,7 @@
                         </button>
                     </div>
                     <div class="column">
-                        <button class="button-save-panel" data-url="{{route('products_store')}}">
+                        <button class="button-save-panel" data-url="{{route('customers_store')}}">
                             <div class="svg-wrapper-1">
                                 <div class="svg-wrapper">
                                     <svg style="width:24px;height:24px" viewBox="0 0 24 24">
@@ -141,17 +146,17 @@
                 <th>Creado</th>
             </tr>
 
-            @if(isset($products))
-                @foreach($products as $product_element)
+            @if(isset($customers))
+                @foreach($customers as $customer_element)
                     <tr>
-                        <td>{{$product_element->id}}</td>
-                        <td>{{$product_element->name}}</td>
-                        <td>{{$product_element->created_at}}</td>
+                        <td>{{$customer_element->id}}</td>
+                        <td>{{$customer_element->name}}</td>
+                        <td>{{$customer_element->created_at}}</td>
                         <td>
                             <div class="desktop-two-columns">
                                 <div class="column">
                                     <div class="panel-button-table" >
-                                        <div class="edit-button" data-url="{{route('products_edit', ['product' => $product_element->id])}}">
+                                        <div class="edit-button" data-url="{{route('customers_edit', ['customer' => $customer_element->id])}}">
                                             <svg viewBox="0 0 24 24">
                                                 <path fill="currentColor"
                                                     d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
@@ -162,7 +167,7 @@
                                 </div>
                                 <div class="column">
                                     <div class="panel-button-table" >
-                                        <div class="delete-button" data-url="{{route('products_destroy', ['product' => $product_element->id])}}">
+                                        <div class="delete-button" data-url="{{route('customers_destroy', ['customer' => $customer_element->id])}}">
                                             <svg viewBox="0 0 24 24">
                                                 <path fill="currentColor"
                                                     d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />

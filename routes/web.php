@@ -55,6 +55,20 @@ Route::group(['prefix' => 'admin'], function () {
         ]
     ]);
 
+    Route::resource('clientes', 'App\Http\Controllers\Admin\CustomerController', [
+        'parameters' => [
+            'clientes' => 'customer', 
+        ],
+        'names' => [
+            'index' => 'customers',
+            'create' => 'customers_create',
+            'edit' => 'customers_edit',
+            'store' => 'customers_store',
+            'destroy' => 'customers_destroy',
+            'show' => 'customers_show',
+        ]
+    ]);
+
     Route::resource('faqs', 'App\Http\Controllers\Admin\FaqController', [
         'parameters' => [
             'faqs' => 'faq', 

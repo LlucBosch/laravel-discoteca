@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->decimal('price');
+            $table->integer('category_id');
             $table->text('features');
             $table->boolean('visible');
             $table->boolean('active');
