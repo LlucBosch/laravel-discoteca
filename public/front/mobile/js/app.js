@@ -284,15 +284,18 @@ var renderTabsTicket = function renderTabsTicket() {
   }); // for mobile
 
   var selectTicket = document.querySelector(".select-ticket");
-  selectTicket.addEventListener("change", function () {
-    tabRelateds.forEach(function (tabRelated) {
-      tabRelated.classList.remove("active");
 
-      if (selectTicket.value == tabRelated.dataset.number) {
-        tabRelated.classList.add("active");
-      }
+  if (selectTicket) {
+    selectTicket.addEventListener("change", function () {
+      tabRelateds.forEach(function (tabRelated) {
+        tabRelated.classList.remove("active");
+
+        if (selectTicket.value == tabRelated.dataset.number) {
+          tabRelated.classList.add("active");
+        }
+      });
     });
-  });
+  }
 };
 
 /***/ }),

@@ -33,18 +33,22 @@ export let renderTabsTicket = () => {
     // for mobile
     let selectTicket = document.querySelector(".select-ticket")
 
-    selectTicket.addEventListener("change", () => {
+    if(selectTicket){
+        selectTicket.addEventListener("change", () => {
 
-        tabRelateds.forEach(tabRelated => {
+            tabRelateds.forEach(tabRelated => {
+    
+                tabRelated.classList.remove("active");
+    
+                if(selectTicket.value == tabRelated.dataset.number) {
+                    tabRelated.classList.add("active");
+                }
+                
+            });
+    
+        })
+    }
 
-            tabRelated.classList.remove("active");
 
-            if(selectTicket.value == tabRelated.dataset.number) {
-                tabRelated.classList.add("active");
-            }
-            
-        });
-
-    })
 
 }

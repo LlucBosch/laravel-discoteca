@@ -7,11 +7,11 @@
 
     @if($agent->isDesktop())
         @include("front.components.page_title", ['title' => "Contacta con nosotros"])
-        @include("front.pages.contact.desktop.contact")
+        @include("front.pages.contacts.desktop.contact")
     @endif
 
     @if($agent->isMobile())
-        @include("front.pages.contact.mobile.contact")
+        @include("front.pages.contacts.mobile.contact")
     @endif
 
 @endsection

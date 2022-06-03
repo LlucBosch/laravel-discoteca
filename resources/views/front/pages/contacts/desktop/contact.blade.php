@@ -1,3 +1,4 @@
+<form class="front-form" data-url="{{route('contacts_store')}}"> 
             <div class="contact">
                 <div class="desktop-two-columns mobile-one-column">
                     <div class="column">
@@ -44,7 +45,7 @@
                                                 <label>Nombre</label>
                                             </div>
                                             <div class="form-element-input">
-                                                <input type="text">
+                                                <input type="text" name="name" value="{{isset($contact->name) ? $contact->name : ''}}">
                                             </div>
                                         </div>
                                     </div>
@@ -54,7 +55,7 @@
                                                 <label>Apellidos</label>
                                             </div>
                                             <div class="form-element-input">
-                                                <input type="text">
+                                                <input type="text" name="surnames" value="{{isset($contact->surnames) ? $contact->surnames : ''}}">
                                             </div>
                                         </div>
                                     </div>
@@ -66,7 +67,7 @@
                                                 <label>Teléfono</label>
                                             </div>
                                             <div class="form-element-input">
-                                                <input type="tel">
+                                                <input type="number" name="phone" value="{{isset($contact->phone) ? $contact->phone : ''}}">
                                             </div>
                                         </div>
                                     </div>
@@ -76,7 +77,7 @@
                                                 <label>Email</label>
                                             </div>
                                             <div class="form-element-input">
-                                                <input type="email">
+                                                <input type="email" name="email" value="{{isset($contact->email) ? $contact->email : ''}}">
                                             </div>
                                         </div>
                                     </div>
@@ -86,11 +87,11 @@
                                         <label>Mensaje</label>
                                     </div>
                                     <div class="form-element-input">
-                                        <textarea name="" id="" cols="54" rows="8"></textarea>
+                                        <textarea name="message" id="" cols="54" rows="8">{{isset($contact->message) ? $contact->message:''}}</textarea>
                                     </div>
                                 </div>
                                 <div class="form-send-button">
-                                    <button>
+                                    <button class="button-save-panel" data-url="{{route('contacts_store')}}">
                                         <div class="svg-wrapper-1">
                                           <div class="svg-wrapper">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
@@ -107,3 +108,4 @@
                     </div>
                 </div>
             </div>
+</form>            

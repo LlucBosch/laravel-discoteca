@@ -113,13 +113,24 @@ Route::group(['prefix' => 'admin'], function () {
 
 });
 
+// Route::GET('/contacto', 'App\Http\Controllers\Front\ContactController@index')->name('front_contact');
+// Route::post('/contacto', 'App\Http\Controllers\Front\ContactController@store')->name('contacts_store');
+
+Route::get('/contacto', function () {
+    return view('front.pages.contacts.index');
+});
+
+Route::post('/contacto', 'App\Http\Controllers\Front\ContactController@store')->name('contacts_store');
+
+
+
 Route::get('/', function () {
     return view('front.pages.home.index');
 });
 
-Route::get('/contacto', function () {
-    return view('front.pages.contact.index');
-});
+// Route::get('/contacto', function () {
+//     return view('front.pages.contacts.index');
+// });
 
 Route::get('/checkout', function () {
     return view('front.pages.checkout.index');
