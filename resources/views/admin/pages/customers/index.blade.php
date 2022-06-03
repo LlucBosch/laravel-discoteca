@@ -6,7 +6,7 @@
         <div class="panel-form">
             <div class="panel-tabs-related">
                 <div class="tab-related active" data-number="one">
-                    <form action="{{route("customers_store")}}">
+                    <form class="admin-form" action="{{route("customers_store")}}">
                         <div class="desktop-two-columns mobile-one-column">
                             <div class="column">
                                 <div class="form-element">
