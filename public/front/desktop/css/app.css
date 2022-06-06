@@ -825,6 +825,16 @@ form .form-send-button button:active {
   border-radius: 1000px;
 }
 
+.products {
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: start;
+}
+.products .product {
+  width: 30%;
+  padding-right: 1.5rem;
+}
+
 .column-aside-tickets {
   border-right: solid 2.5px hsl(0deg, 0%, 0%);
 }

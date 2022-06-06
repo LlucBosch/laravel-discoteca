@@ -1,15 +1,9 @@
 
-
 export let renderForm = () => {
 
-    let formContainer = document.querySelector(".form");
+    let mainContainer = document.querySelector("main");
     let storeButton = document.querySelector('.button-save-panel');
     let forms = document.querySelectorAll('.front-form');
-
-
-    document.addEventListener("loadForm",( event =>{
-        formContainer.innerHTML = event.detail.form;
-    }), {once: true});
 
     document.addEventListener("renderFormModules",( event =>{
         renderForm();
@@ -56,16 +50,9 @@ export let renderForm = () => {
                     })
                     .then(json => {
 
-                        formContainer.innerHTML = json.form;
-
-                        document.dispatchEvent(new CustomEvent('loadTable', {
-                            detail: {
-                                table: json.table,
-                            }
-                        }));
+                        mainContainer.innerHTML = json.form;
 
                         document.dispatchEvent(new CustomEvent('renderFormModules'));
-                        document.dispatchEvent(new CustomEvent('renderTableModules'));
                     })
                     .catch ( error =>  {
     

@@ -171,14 +171,9 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 var renderForm = function renderForm() {
-  var formContainer = document.querySelector(".form");
+  var mainContainer = document.querySelector("main");
   var storeButton = document.querySelector('.button-save-panel');
   var forms = document.querySelectorAll('.front-form');
-  document.addEventListener("loadForm", function (event) {
-    formContainer.innerHTML = event.detail.form;
-  }, {
-    once: true
-  });
   document.addEventListener("renderFormModules", function (event) {
     renderForm();
   }, {
@@ -235,14 +230,8 @@ var renderForm = function renderForm() {
                       if (!response.ok) throw response;
                       return response.json();
                     }).then(function (json) {
-                      formContainer.innerHTML = json.form;
-                      document.dispatchEvent(new CustomEvent('loadTable', {
-                        detail: {
-                          table: json.table
-                        }
-                      }));
+                      mainContainer.innerHTML = json.form;
                       document.dispatchEvent(new CustomEvent('renderFormModules'));
-                      document.dispatchEvent(new CustomEvent('renderTableModules'));
                     })["catch"](function (error) {
                       if (error.status == '422') {
                         error.json().then(function (jsonError) {

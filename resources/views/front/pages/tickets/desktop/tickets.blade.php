@@ -46,117 +46,27 @@
                     </div>
 
                     <div class="services-main">
-                        <div class="desktop-three-columns">
-                            <div class="column">
-                                <div class="services-main-target">
-                                    <div class="service-photo">
-                                        <img src="./images/service1.webp" alt="service1">
+                        <div class="products">
+                            @if(isset($products))
+                                @foreach($products as $product)
+                                    <div class="product">
+                                        <div class="services-main-target">
+                                            <div class="service-photo">
+                                                <img src="./images/service1.webp" alt="service1">
+                                            </div>
+                                            <div class="service-title" data-list="{{$product->title}}">
+                                                <h2>{{$product->title}}</h2>
+                                            </div>
+                                            <div class="service-text" data-content="{{$product->title}}">
+                                                {!!$product->description!!}
+                                            </div>
+                                            <div class="service-button-tickets">
+                                                <h3>COMPRAR</h3>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="service-title">
-                                        <h2>Dj Pedro Calderón</h2>
-                                    </div>
-                                    <div class="service-text">
-                                        <p>El día 20 de abril, desde las canarias viene el Dj de momento. Una noche con
-                                            mezclas de reggeaton y la música que suena hoy en día. No te pierdas esta
-                                            gran oportunidad.</p>
-                                    </div>
-                                    <div class="service-button-tickets">
-                                        <h3>COMPRAR</h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="column">
-                                <div class="services-main-target">
-                                    <div class="service-photo">
-                                        <img src="./images/service1.webp" alt="service1">
-                                    </div>
-                                    <div class="service-title">
-                                        <h2>Dj Pedro Calderón</h2>
-                                    </div>
-                                    <div class="service-text">
-                                        <p>El día 20 de abril, desde las canarias viene el Dj de momento. Una noche con
-                                            mezclas de reggeaton y la música que suena hoy en día. No te pierdas esta
-                                            gran oportunidad.</p>
-                                    </div>
-                                    <div class="service-button-tickets">
-                                        <h3>COMPRAR</h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="column">
-                                <div class="services-main-target">
-                                    <div class="service-photo">
-                                        <img src="./images/service1.webp" alt="service1">
-                                    </div>
-                                    <div class="service-title">
-                                        <h2>Dj Pedro Calderón</h2>
-                                    </div>
-                                    <div class="service-text">
-                                        <p>El día 20 de abril, desde las canarias viene el Dj de momento. Una noche con
-                                            mezclas de reggeaton y la música que suena hoy en día. No te pierdas esta
-                                            gran oportunidad.</p>
-                                    </div>
-                                    <div class="service-button-tickets">
-                                        <h3>COMPRAR</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="desktop-three-columns">
-                            <div class="column">
-                                <div class="services-main-target">
-                                    <div class="service-photo">
-                                        <img src="./images/service1.webp" alt="service1">
-                                    </div>
-                                    <div class="service-title">
-                                        <h2>Dj Pedro Calderón</h2>
-                                    </div>
-                                    <div class="service-text">
-                                        <p>El día 20 de abril, desde las canarias viene el Dj de momento. Una noche con
-                                            mezclas de reggeaton y la música que suena hoy en día. No te pierdas esta
-                                            gran oportunidad.</p>
-                                    </div>
-                                    <div class="service-button-tickets">
-                                        <h3>COMPRAR</h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="column">
-                                <div class="services-main-target">
-                                    <div class="service-photo">
-                                        <img src="./images/service1.webp" alt="service1">
-                                    </div>
-                                    <div class="service-title">
-                                        <h2>Dj Pedro Calderón</h2>
-                                    </div>
-                                    <div class="service-text">
-                                        <p>El día 20 de abril, desde las canarias viene el Dj de momento. Una noche con
-                                            mezclas de reggeaton y la música que suena hoy en día. No te pierdas esta
-                                            gran oportunidad.</p>
-                                    </div>
-                                    <div class="service-button-tickets">
-                                        <h3>COMPRAR</h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="column">
-                                <div class="services-main-target">
-                                    <div class="service-photo">
-                                        <img src="./images/service1.webp" alt="service1">
-                                    </div>
-                                    <div class="service-title">
-                                        <h2>Dj Pedro Calderón</h2>
-                                    </div>
-                                    <div class="service-text">
-                                        <p>El día 20 de abril, desde las canarias viene el Dj de momento. Una noche con
-                                            mezclas de reggeaton y la música que suena hoy en día. No te pierdas esta
-                                            gran oportunidad.</p>
-                                    </div>
-                                    <div class="service-button-tickets">
-                                        <h3>COMPRAR</h3>
-                                    </div>
-                                </div>
-                            </div>
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>

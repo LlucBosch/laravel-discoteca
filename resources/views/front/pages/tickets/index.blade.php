@@ -6,11 +6,11 @@
 @section("content")
     
     @if($agent->isDesktop())
-        @include("front.pages.tickets.desktop.tickets")
+        @include("front.pages.tickets.desktop.tickets", ['products' => $products]) 
     @endif
 
     @if($agent->isMobile())
-        @include("front.pages.tickets.mobile.tickets")
+        @include("front.pages.tickets.mobile.tickets", ['products' => $products])
     @endif
 
 @endsection
