@@ -40,10 +40,10 @@
     <div class="column-main">
         <div class="ticket-text">
             <div class="ticket-text-title">
-                <h2>Dj Pedro Calderón</h2>
+                <h2>{{$product->title}}</h2>
             </div>
             <div class="ticket-text-price">
-                <h3>120€ / día</h3>
+                <h3>{{$product->price}}€ / día</h3>
             </div>
             <div class="tabs">
                 <div class="tab active" data-number="one">
@@ -58,22 +58,10 @@
             </div>
             <div class="tab-relateds">
                 <div class="tab-related active" data-number="one">
-                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
-                        piece of classical Latin literature from 45 BC, making it over 2000 years old.<br>
-                        Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up
-                        one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going
-                        through the cites of the word in classical literature, discovered the undoubtable
-                        source.<br> Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum
-                        et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC.<br> This book
-                        is a treatise on the theory of ethics, very popular during the Renaissance. The first
-                        line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section.</p>
+                    <p>{{$product->description}}</p>
                 </div>
                 <div class="tab-related" data-number="two">
-                    <ul>
-                        <li>Discoteca abierta hasta la 6:00</li>
-                        <li>Musica a la moda como Reggeaton</li>
-                        <li>Fiesta de disfraces con premios</li>
-                    </ul>
+                    <p>{{$product->features}}</p>
                 </div>
                 <div class="tab-related" data-number="three">
                     <p>Actualmente no hay opiniones sobre este evento</p>

@@ -1,3 +1,4 @@
+<div class="frontProducts">
         <div class="desktop-two-columns-aside mobile-one-column">
             <div class="column-aside column">
                     <div class="categories-menu desktop-only">
@@ -60,7 +61,7 @@
                                             <div class="service-text" data-content="{{$product->title}}">
                                                 {!!$product->description!!}
                                             </div>
-                                            <div class="service-button-tickets">
+                                            <div class="service-button-tickets" data-url="{{route('front_product', ['product' => $product->id])}}">
                                                 <h3>COMPRAR</h3>
                                             </div>
                                         </div>
@@ -72,3 +73,4 @@
                 </div>
             </div>
         </div>      
+</div>

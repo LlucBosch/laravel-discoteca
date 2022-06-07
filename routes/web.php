@@ -113,19 +113,17 @@ Route::group(['prefix' => 'admin'], function () {
 
 });
 
-Route::get('/', 'App\Http\Controllers\Front\HomeController@index');
+Route::get('/', 'App\Http\Controllers\Front\HomeController@index')->name('front_home');
 
-Route::get('/contacto', 'App\Http\Controllers\Front\ContactController@index');
-
+Route::get('/contacto', 'App\Http\Controllers\Front\ContactController@index')->name('front_contact');
 Route::post('/contacto', 'App\Http\Controllers\Front\ContactController@store')->name('contacts_store');
 
-Route::get('/checkout', 'App\Http\Controllers\Front\CheckoutController@index');
+Route::get('/checkout', 'App\Http\Controllers\Front\CheckoutController@index')->name('front_checkout');
 
-Route::get('/faqs', 'App\Http\Controllers\Front\FaqController@index');
+Route::get('/faqs', 'App\Http\Controllers\Front\FaqController@index')->name('front_faqs');
 
-Route::get('/carrito', 'App\Http\Controllers\Front\PurchaseController@index');
+Route::get('/carrito', 'App\Http\Controllers\Front\PurchaseController@index')->name('front_carrito');
 
-Route::get('/tickets', 'App\Http\Controllers\Front\ProductController@index');
-Route::get('/ticket', 'App\Http\Controllers\Front\ProductController@show');
-
+Route::get('/tickets', 'App\Http\Controllers\Front\ProductController@index')->name('front_tickets');
+Route::get('/tickets/{product}', 'App\Http\Controllers\Front\ProductController@show')->name('front_product');
 

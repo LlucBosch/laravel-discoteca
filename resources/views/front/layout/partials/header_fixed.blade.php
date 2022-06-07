@@ -2,9 +2,9 @@
     <!-- menu desplegable para movil -->
     <div class="mobile-only" id="mobileMenu">
         <ul>        
-            <li>INICIO</li>
-            <li>ENTRADAS</li>
-            <li>CONTACTO</li>
+            <li data-url="{{route("front_home")}}">INICIO</li>
+            <li data-url="{{route("front_tickets")}}">ENTRADAS</li>
+            <li data-url="{{route("front_contact")}}">CONTACTO</li>
         </ul>
     </div>
     <!-- logo y menu bar -->
@@ -22,9 +22,9 @@
                     <div class="header-main-menu">
                         <div class="desktop-only">
                         <ul>
-                            <li><a href="/">INICIO</a></li>
-                            <li><a href="tickets">ENTRADAS</a></li>
-                            <li><a href="contacto">CONTACTO</a></li>
+                            <li class="buttons-menu" data-url="{{route("front_home")}}"><a>INICIO</a></li>
+                            <li class="buttons-menu" data-url="{{route("front_tickets")}}"><a>ENTRADAS</a></li>
+                            <li class="buttons-menu" data-url="{{route("front_contact")}}"><a>CONTACTO</a></li>
                         </ul>
                         </div>
                         <div class="mobile-only">

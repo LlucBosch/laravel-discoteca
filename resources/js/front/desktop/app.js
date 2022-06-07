@@ -8,6 +8,8 @@ import { notificationTransition } from "./notification.js";
 import {uploadImage} from "./upload-image.js";
 import {renderCkeditor} from "./ckeditor.js";
 import {renderFaqs} from "./faqs.js";
+import {renderfrontProducts} from "./products.js";
+import {renderMenu} from "./menu.js";
 
 
 renderMenuButton();
@@ -20,3 +22,5 @@ notificationTransition();
 uploadImage();
 renderCkeditor();
 renderFaqs();
+renderfrontProducts();
+renderMenu();
