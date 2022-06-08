@@ -39,7 +39,7 @@
                                         <label>Descripción</label>
                                     </div>
                                     <div class="form-element-input">
-                                        <textarea name="description" class="editor">{{isset($product->description) ? $product->description:''}}</textarea>
+                                        <textarea name="description" class="editor" ></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -62,9 +62,15 @@
                                     <div class="form-element-label">
                                         <label>Categoría</label>
                                     </div>
-                                    <div class="form-element-input">
-                                        <select name="categories"></select>
-                                    </div>
+                                    @if(isset($product_categories))
+                                        <div class="form-element-input">
+                                            <select name="categories">
+                                                @foreach($product_categories as $product_category)
+                                                    <option value="{{$product_category->id}}">{{$product_category->title}}</option>
+                                                @endforeach  
+                                            </select>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>

@@ -5,14 +5,16 @@
                         <div class="categories-menu-title">
                             <h2>Categorías</h2>
                         </div>
+                        @if(isset($product_categories))
                         <div class="categories-menu-items">
                             <ul>
                                 <li>Todas</li>
-                                <li>Discotecas</li>
-                                <li>Conciertos</li>
-                                <li>Eventos</li>
+                                @foreach($product_categories as $product_category)
+                                <li>{{$product_category->title}}</li>
+                                @endforeach
                             </ul>
                         </div>
+                        @endif
                     </div>
             </div>
             <div class="column-main column">
