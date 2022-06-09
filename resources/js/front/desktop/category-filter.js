@@ -1,7 +1,7 @@
-export let renderMenu = () => {
+export let renderFilterCategory = () => {
 
     let mainContainer = document.querySelector("main");
-    let menuButtons = document.querySelectorAll(".buttons-menu");
+    let categoryButtons = document.querySelectorAll(".buttons-category");
 
     document.addEventListener("renderFormModules",( event =>{
         renderForm();
@@ -15,14 +15,14 @@ export let renderMenu = () => {
         renderFilterCategory();
     }), {once: true});
 
-    if(menuButtons){
+    if(categoryButtons){
 
-        menuButtons.forEach(menuButton => {
+        categoryButtons.forEach(categoryButton => {
 
-            menuButton.addEventListener("click", () => {
+            categoryButton.addEventListener("click", () => {
     
-                let url = menuButton.dataset.url;
-
+                let url = categoryButton.dataset.url;
+                console.log(url);
                 let sendNewRequest = async () => {
                     
                     let response = await fetch(url, {
@@ -41,7 +41,7 @@ export let renderMenu = () => {
 
                         mainContainer.innerHTML = json.content;
 
-                        document.dispatchEvent(new CustomEvent('renderMenu'));
+                        document.dispatchEvent(new CustomEvent('renderFilterCategory'));
 
                     })
                     .catch(error =>  {

@@ -64,9 +64,9 @@
                                     </div>
                                     @if(isset($product_categories))
                                         <div class="form-element-input">
-                                            <select name="categories">
+                                            <select name="category_id">
                                                 @foreach($product_categories as $product_category)
-                                                    <option value="{{$product_category->id}}">{{$product_category->title}}</option>
+                                                    <option value="{{$product_category->id ? $product_category->id : ''}}">{{$product_category->title}}</option>
                                                 @endforeach  
                                             </select>
                                         </div>

@@ -8,9 +8,9 @@
                         @if(isset($product_categories))
                         <div class="categories-menu-items">
                             <ul>
-                                <li>Todas</li>
+                                {{-- <li>Todas</li> --}}
                                 @foreach($product_categories as $product_category)
-                                <li>{{$product_category->title}}</li>
+                                <li class="buttons-category" data-url="{{route('filter_category', ['category' => $product_category->id])}}">{{$product_category->title}}</li>
                                 @endforeach
                             </ul>
                         </div>

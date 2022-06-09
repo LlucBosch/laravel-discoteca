@@ -25,7 +25,7 @@ class ProductController extends Controller
         $view = View::make('admin.pages.products.index')
                 ->with('product', $this->product)
                 ->with('products', $this->product->where('active', 1)->get());
-
+                
         if(request()->ajax()) {
             
             $sections = $view->renderSections(); 

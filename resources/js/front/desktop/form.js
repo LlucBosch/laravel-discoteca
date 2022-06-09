@@ -9,6 +9,14 @@ export let renderForm = () => {
         renderForm();
     }), {once: true});
 
+    document.addEventListener("renderMenu",( event =>{
+        renderMenu();
+    }), {once: true});
+
+    document.addEventListener("renderFilterCategory",( event =>{
+        renderFilterCategory();
+    }), {once: true});
+
     if(storeButton){
 
         storeButton.addEventListener("click", (event) => {
