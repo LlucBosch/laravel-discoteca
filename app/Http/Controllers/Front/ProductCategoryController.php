@@ -6,54 +6,34 @@ use Illuminate\Support\Facades\View;
 use App\Http\Controllers\Controller;
 use App\Models\ProductCategory;
 use App\Http\Requests\Front\ProductCategoryRequest;
-use Debugbar;
-
-
 
 class ProductCategoryController extends Controller
 {
 
-    protected $productCategory;
+    protected $product_category;
 
-    public function __construct(ProductCategory $productCategory)
+    public function __construct(ProductCategory $product_category)
     {
-        $this->productCategory = $productCategory;
+        $this->product_category = $product_category;
     }
 
-
-    public function products()
+    public function show(ProductCategory $category)
     {
-        
-        $products = Post::find(1)->products;
-
-        foreach ($products as $product) {
-            
-            $product = Post::find(1)->products()->first();
-
-        }
-        
-        return $products;
-    }
-
-    public function filter(ProductCategory $productCategory)
-    {
-        //aqui se filtra por categoria
         $view = View::make('front.pages.tickets.index')
-            ->with('productCategory', $productCategory)
-            ->with('products', $productCategory->products()->where("active", 1)->where("visible", 1)->get());
+            ->with('category', $category)
+            ->with('products', $category->products->where("visible", 1));
 
-            if(request()->ajax()) {
-            
-                $sections = $view->renderSections(); 
+        if(request()->ajax()) {
         
-                return response()->json([
-                    'content' => $sections['content'],
-                ]); 
-            }
+            $sections = $view->renderSections(); 
+    
+            return response()->json([
+                'content' => $sections['content'],
+            ]); 
+        }
 
         return $view;
-
-
+            
     }
 
 

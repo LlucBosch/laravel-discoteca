@@ -36,11 +36,11 @@
             color: hsl(0, 0%, 0%);
             margin: 0 -.25rem;
             padding: 0 .25rem;
-            transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+            transition: color .18s ease-in-out, box-shadow .18s ease-in-out;
             cursor: pointer;
         }
 
-        li:hover{
+        li:hover, li.active{
             box-shadow: inset 100px 0 0 0 hsl(0, 0%, 0%);
             color: white;
         }

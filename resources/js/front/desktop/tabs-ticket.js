@@ -2,7 +2,11 @@ export let renderTabsTicket = () => {
 
     // for desktop
     let tabs = document.querySelectorAll(".tab");
-    let tabRelateds = document.querySelectorAll(".tab-related")
+    let tabRelateds = document.querySelectorAll(".tab-related");
+
+    document.addEventListener("renderProductModules",( event =>{
+        renderTabsTicket();
+    }), {once: true});
 
     tabs.forEach(tab => {
 

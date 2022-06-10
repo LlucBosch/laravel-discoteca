@@ -1,21 +1,20 @@
 <div class="frontProducts">
         <div class="desktop-two-columns-aside mobile-one-column">
             <div class="column-aside column">
-                    <div class="categories-menu desktop-only">
-                        <div class="categories-menu-title">
-                            <h2>Categorías</h2>
-                        </div>
-                        @if(isset($product_categories))
+                <div class="categories-menu desktop-only">
+                    <div class="categories-menu-title">
+                        <h2>Categorías</h2>
+                    </div>
+                    @if(isset($product_categories))
                         <div class="categories-menu-items">
                             <ul>
-                                {{-- <li>Todas</li> --}}
                                 @foreach($product_categories as $product_category)
-                                <li class="buttons-category" data-url="{{route('filter_category', ['category' => $product_category->id])}}">{{$product_category->title}}</li>
+                                    <li class="buttons-category {{isset($category) && $category->id == $product_category->id ? 'active' : ''}}" data-url="{{route('front_product_category', ['category' => $product_category->id])}}">{{$product_category->title}}</li>
                                 @endforeach
                             </ul>
                         </div>
-                        @endif
-                    </div>
+                    @endif
+                </div>
             </div>
             <div class="column-main column">
                 <div class="services">
