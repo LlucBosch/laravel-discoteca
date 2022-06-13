@@ -37,10 +37,10 @@
                                 </div>
                                 <div class="services-top-filter">
                                     <h4>Filtros</h4>
-                                    <select>
-                                        <option>Todos</option>
-                                        <option>De mayor a menor precio</option>
-                                        <option>De menor a mayor precio</option>
+                                    <select class="filter-price">
+                                        <option selected="true" disabled="disabled"></option>
+                                        <option value="{{route('front_product_order_desc')}}">De mayor a menor precio</option>
+                                        <option value="{{route('front_product_order_asc')}}">De menor a mayor precio</option>
                                     </select>
                                 </div>
                             </div>
@@ -61,6 +61,9 @@
                                             </div>
                                             <div class="service-text" data-content="{{$product->title}}">
                                                 {!!$product->description!!}
+                                            </div>
+                                            <div class="service-price">
+                                                <p>{{$product->price}} €</p>
                                             </div>
                                             <div class="service-button-tickets" data-url="{{route('front_product', ['product' => $product->id])}}">
                                                 <h3>COMPRAR</h3>
