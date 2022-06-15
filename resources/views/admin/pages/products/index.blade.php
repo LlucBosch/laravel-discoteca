@@ -7,7 +7,7 @@
             <div class="panel-tabs-related">
                 <div class="tab-related active" data-number="one">
                     <form class="admin-form" action="{{route("products_store")}}"> 
-                        <input type="hidden" name="id">
+                        <input type="hidden" name="id" value="{{isset($product->id) ? $product->id :''}}">
                         <div class="desktop-one-column">
                             <div class="column">
                                 <div class="form-element">
@@ -39,19 +39,38 @@
                                         <label>Descripción</label>
                                     </div>
                                     <div class="form-element-input">
-                                        <textarea name="description" class="editor" ></textarea>
+                                        <textarea name="description" class="editor" >{{isset($product->description) ? $product->description :''}}</textarea>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="desktop-one-column">
+                        <div class="desktop-two-columns">
                             <div class="column">
                                 <div class="form-element">
                                     <div class="form-element-label">
                                         <label>Precio</label>
                                     </div>
                                     <div class="form-element-input">
-                                        <input type="number" name="price" value="{{isset($product->price) ? $product->price : ''}}">
+                                        <input type="number" name="price" value="{{isset($product->prices->first()->base_price) ? $product->prices->first()->base_price : ''}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="form-element">
+                                    <div class="form-element-label">
+                                        <label>IVA</label>
+                                    </div>
+                                    <div class="form-element-input">
+                                        <select name="tax_id">
+                                            <option value="" disabled selected>--Seleccione IVA--</option>
+        
+                                            @if(isset($taxes))
+                                                @foreach($taxes as $tax)
+                                                    <option value="{{$tax->id}}" {{ isset($product->prices->first()->tax->id)  && $product->prices->first()->tax->id == $tax->id ? 'selected' : ''}}>{{$tax->type}}</option>
+                                                @endforeach
+                                            @endif
+                                            
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -65,8 +84,9 @@
                                     @if(isset($product_categories))
                                         <div class="form-element-input">
                                             <select name="category_id">
+                                                <option value="" disabled>--Seleccione categoría--</option>
                                                 @foreach($product_categories as $product_category)
-                                                    <option value="{{$product_category->id ? $product_category->id : ''}}">{{$product_category->title}}</option>
+                                                    <option value="{{$product_category->id}}"{{isset($product->category->id) && $product->category->id == $product_category->id ? 'selected' : ''}}>{{$product_category->title}}</option>
                                                 @endforeach  
                                             </select>
                                         </div>
