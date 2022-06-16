@@ -10,6 +10,7 @@ import {renderCkeditor} from "./ckeditor.js";
 import {renderFaqs} from "./faqs.js";
 import {renderfrontProducts} from "./products.js";
 import {renderMenu} from "./menu.js";
+import {renderCart} from "./cart.js";
 
 renderMenuButton();
 renderPanelButton();
@@ -23,3 +24,4 @@ renderCkeditor();
 renderFaqs();
 renderfrontProducts();
 renderMenu();
+renderCart();

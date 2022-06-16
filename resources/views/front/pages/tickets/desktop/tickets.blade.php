@@ -63,7 +63,7 @@
                                                 {!!$product->description!!}
                                             </div>
                                             <div class="service-price">
-                                                <p>{{$product->price}} €</p>
+                                                <p>{{$product->prices->first()->base_price}} €</p>
                                             </div>
                                             <div class="service-button-tickets" data-url="{{route('front_product', ['product' => $product->id])}}">
                                                 <h3>COMPRAR</h3>
