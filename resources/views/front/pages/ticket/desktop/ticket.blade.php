@@ -69,7 +69,7 @@
                 </div>
             </div>
 
-            <form class="admin-form" action="{{route('add_cart')}}">
+            <form class="front-form" action="{{route('add_cart')}}">
                 <div class="ticket-text-quantity">
                     <div class="desktop-two-columns">
                         <div class="column">
@@ -80,16 +80,15 @@
                         <div class="column">
                             <div class="plus-minus-button">
                                 <button class="minus">−</button>
-                                <input class="plus-minus-input" type="number" value="1" min="1" max="8">
+                                <input class="plus-minus-input" name="quantity" type="number" value="1" min="1" max="8">
                                 <button class="plus">+</button>
                                 <input type="hidden" name="price_id" value="{{$product->prices->first()->id}}">
-                                <input type="hidden" name="fingerprint_id" value="2">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="ticket-text-button">
-                    <button class="add-cart" data-url="{{route('add_cart')}}">
+                    <button class="add-cart">
                         <div class="svg-wrapper-1">
                             <div class="svg-wrapper">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">

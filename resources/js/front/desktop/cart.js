@@ -1,16 +1,16 @@
 export let renderCart = () => {
 
     let mainContainer = document.querySelector("main");
-    let storeButton = document.querySelector('.add-cart');
+    let addToCartButton = document.querySelector('.add-cart');
     let forms = document.querySelectorAll('.front-form');
 
-    document.addEventListener("renderFormModules",( event =>{
+    document.addEventListener("renderProductModules",( event =>{
         renderCart();
     }), {once: true});
 
-    if(storeButton){
+    if(addToCartButton){
 
-        storeButton.addEventListener("click", (event) => {
+        addToCartButton.addEventListener("click", (event) => {
     
             event.preventDefault();
             
@@ -21,13 +21,6 @@ export let renderCart = () => {
 
                 for (var pair of data.entries()) {
                     console.log(pair[0]+ ', ' + pair[1]); 
-                }
-    
-                if( ckeditors != 'null'){
-    
-                    Object.entries(ckeditors).forEach(([key, value]) => {
-                        data.append(key, value.getData());
-                    });
                 }
     
                 let sendPostRequest = async () => {
@@ -50,35 +43,8 @@ export let renderCart = () => {
 
                         mainContainer.innerHTML = json.form;
 
-                        document.dispatchEvent(new CustomEvent('loadTable', {
-                            detail: {
-                                table: json.table,
-                            }
-                        }));
-
-                        document.dispatchEvent(new CustomEvent('renderFormModules'));
-                                        })
+                    })
                     .catch ( error =>  {
-        
-                        if(error.status == '422'){
-        
-                            error.json().then(jsonError => {
-
-                                let errors = jsonError.errors;      
-                                let errorMessage = '';
-            
-                                Object.keys(errors).forEach(function(key) {
-                                    errorMessage += '<li>' + errors[key] + '</li>';
-                                })
-                
-                                document.dispatchEvent(new CustomEvent('message', {
-                                    detail: {
-                                        message: errorMessage,
-                                        type: 'error'
-                                    }
-                                }));
-                            })   
-                        }
     
                         if(error.status == '500'){
                             console.log(error);

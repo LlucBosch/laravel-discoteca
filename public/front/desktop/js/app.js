@@ -98,15 +98,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
@@ -114,16 +106,16 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 var renderCart = function renderCart() {
   var mainContainer = document.querySelector("main");
-  var storeButton = document.querySelector('.add-cart');
+  var addToCartButton = document.querySelector('.add-cart');
   var forms = document.querySelectorAll('.front-form');
-  document.addEventListener("renderFormModules", function (event) {
+  document.addEventListener("renderProductModules", function (event) {
     renderCart();
   }, {
     once: true
   });
 
-  if (storeButton) {
-    storeButton.addEventListener("click", function (event) {
+  if (addToCartButton) {
+    addToCartButton.addEventListener("click", function (event) {
       event.preventDefault();
       forms.forEach(function (form) {
         var data = new FormData(form);
@@ -143,18 +135,8 @@ var renderCart = function renderCart() {
           _iterator.f();
         }
 
-        if (ckeditors != 'null') {
-          Object.entries(ckeditors).forEach(function (_ref) {
-            var _ref2 = _slicedToArray(_ref, 2),
-                key = _ref2[0],
-                value = _ref2[1];
-
-            data.append(key, value.getData());
-          });
-        }
-
         var sendPostRequest = /*#__PURE__*/function () {
-          var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+          var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
             var response;
             return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
               while (1) {
@@ -173,29 +155,7 @@ var renderCart = function renderCart() {
                       return response.json();
                     }).then(function (json) {
                       mainContainer.innerHTML = json.form;
-                      document.dispatchEvent(new CustomEvent('loadTable', {
-                        detail: {
-                          table: json.table
-                        }
-                      }));
-                      document.dispatchEvent(new CustomEvent('renderFormModules'));
                     })["catch"](function (error) {
-                      if (error.status == '422') {
-                        error.json().then(function (jsonError) {
-                          var errors = jsonError.errors;
-                          var errorMessage = '';
-                          Object.keys(errors).forEach(function (key) {
-                            errorMessage += '<li>' + errors[key] + '</li>';
-                          });
-                          document.dispatchEvent(new CustomEvent('message', {
-                            detail: {
-                              message: errorMessage,
-                              type: 'error'
-                            }
-                          }));
-                        });
-                      }
-
                       if (error.status == '500') {
                         console.log(error);
                       }
@@ -215,7 +175,7 @@ var renderCart = function renderCart() {
           }));
 
           return function sendPostRequest() {
-            return _ref3.apply(this, arguments);
+            return _ref.apply(this, arguments);
           };
         }();
 
@@ -671,16 +631,18 @@ var renderPlusMinus = function renderPlusMinus() {
     once: true
   });
   plusButtons.forEach(function (plusButton) {
-    plusButton.addEventListener('click', function () {
-      // plusButton es el boton que hemos presionado de los plusButtons, al hacerle un closet se guardará
+    plusButton.addEventListener('click', function (event) {
+      event.preventDefault(); // plusButton es el boton que hemos presionado de los plusButtons, al hacerle un closet se guardará
       // en la variable el elemento padre en concreto de ese boton que tiene la clase .plus-minus-input
       // despues seleccionaremos el input de ese elemento en concreto con el querySelector
+
       var buttonPlusMinusInput = plusButton.closest(".plus-minus-button").querySelector('.plus-minus-input');
       buttonPlusMinusInput.value = parseInt(buttonPlusMinusInput.value) + 1;
     });
   });
   minusButtons.forEach(function (minusButton) {
-    minusButton.addEventListener('click', function () {
+    minusButton.addEventListener('click', function (event) {
+      event.preventDefault();
       var buttonPlusMinusInput = minusButton.closest(".plus-minus-button").querySelector('.plus-minus-input');
 
       if (buttonPlusMinusInput.value > 1) {

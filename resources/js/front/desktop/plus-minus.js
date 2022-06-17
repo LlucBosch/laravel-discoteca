@@ -10,7 +10,9 @@ export let renderPlusMinus = () => {
 
     plusButtons.forEach(plusButton => {
 
-        plusButton.addEventListener('click', () => {
+        plusButton.addEventListener('click', (event) => {
+
+            event.preventDefault();
 
             // plusButton es el boton que hemos presionado de los plusButtons, al hacerle un closet se guardará
             // en la variable el elemento padre en concreto de ese boton que tiene la clase .plus-minus-input
@@ -26,7 +28,9 @@ export let renderPlusMinus = () => {
 
     minusButtons.forEach(minusButton => {
 
-        minusButton.addEventListener('click', () => {
+        minusButton.addEventListener('click', (event) => {
+
+            event.preventDefault();
 
             let buttonPlusMinusInput = minusButton.closest(".plus-minus-button").querySelector('.plus-minus-input');
 

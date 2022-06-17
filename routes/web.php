@@ -130,4 +130,4 @@ Route::get('/tickets/{category}', 'App\Http\Controllers\Front\ProductCategoryCon
 
 
 Route::get('/ticket/{product}', 'App\Http\Controllers\Front\ProductController@show')->name('front_product');
-Route::post('/ticket', 'App\Http\Controllers\Front\CartController@store')->name('add_cart');
+Route::post('/ticketstore', 'App\Http\Controllers\Front\CartController@store')->name('add_cart');

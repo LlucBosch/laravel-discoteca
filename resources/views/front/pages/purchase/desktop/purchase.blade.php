@@ -8,10 +8,12 @@
                         <th>Precio</th>
                         <th>Cantidad</th>
                     </tr>
+            @if(isset($products))
+                @foreach($products as $product)
                     <tr>
                         <td class="desktop-only"><img src="./images/service1.webp" alt=""></td>
-                        <td>Satelite</td>
-                        <td>20 €</td>
+                        <td>{{$product->title}}</td>
+                        <td>{{$product->prices->first()->base_price}} €</td>
                         <td>
                             <div class="plus-minus-button">
                                 <button class="minus">−</button>
@@ -20,18 +22,8 @@
                             </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="desktop-only"><img src="./images/service2.webp" alt=""></td>
-                        <td>Euforia</td>
-                        <td>30 €</td>
-                        <td>
-                            <div class="plus-minus-button">
-                                <button class="minus">−</button>
-                                <input class="plus-minus-input" type="number" value="1" min="1">
-                                <button class="plus">+</button>
-                            </div>
-                        </td>
-                    </tr>
+                @endforeach
+            @endif
                 </table>
             </div>
 
