@@ -121,7 +121,6 @@ Route::get('/checkout', 'App\Http\Controllers\Front\CheckoutController@index')->
 
 Route::get('/faqs', 'App\Http\Controllers\Front\FaqController@index')->name('front_faqs');
 
-Route::get('/carrito', 'App\Http\Controllers\Front\PurchaseController@index')->name('front_carrito');
 
 Route::get('/tickets', 'App\Http\Controllers\Front\ProductController@index')->name('front_tickets');
 Route::get('/tickets/preciomayor', 'App\Http\Controllers\Front\ProductController@orderAsc')->name('front_product_order_asc');
@@ -131,3 +130,6 @@ Route::get('/tickets/{category}', 'App\Http\Controllers\Front\ProductCategoryCon
 
 Route::get('/ticket/{product}', 'App\Http\Controllers\Front\ProductController@show')->name('front_product');
 Route::post('/ticketstore', 'App\Http\Controllers\Front\CartController@store')->name('add_cart');
+
+Route::get('/carrito/plus/{fingerprint}/{price_id}', 'App\Http\Controllers\Front\CartController@plus')->name('plus');
+Route::get('/carrito', 'App\Http\Controllers\Front\CartController@index')->name('front_carrito');

@@ -54,20 +54,18 @@ class CartController extends Controller
             ]);
         }
 
-        $view = View::make('front.pages.purchase.index')
-        ->with('products',  $this->cart->select(DB::raw('count(price_id) as quantity'),'price_id')
-        ->where('fingerprint', 1)
-        ->groupByRaw('price_id')->get());
 
-        
-        // foreach($products as $product) {
-        //     Debugbar::info($product->quantity);
-        //     Debugbar::info($product->price->base_price);
-        //     Debugbar::info($product->price->product->title);
+        $carts = $this->cart->select(DB::raw('count(price_id) as quantity'),'price_id')
+            ->groupByRaw('price_id')
+            ->where('fingerprint', 1)
+            ->get();
 
-        // }
 
-        $sections = $view->renderSections(); 
+        $sections = View::make('front.pages.purchase.index')
+        ->with('carts', $carts)
+        ->with('fingerprint', $cart->fingerprint)
+        ->renderSections();
+
     
         return response()->json([
             'content' => $sections['content'],
@@ -75,4 +73,32 @@ class CartController extends Controller
    
     }
 
+    public function plus(Request $request)
+    {
+
+        $cart = $this->cart->create([
+            'price_id' => request('price_id'),
+            'fingerprint' => '1',
+            'active' => 1
+    ]);
+
+
+
+        $carts = $this->cart->select(DB::raw('count(price_id) as quantity'),'price_id')
+        ->groupByRaw('price_id')
+        ->where('fingerprint', 1)
+        ->get();
+
+
+        $sections = View::make('front.pages.purchase.index')
+        ->with('carts', $carts)
+        ->with('fingerprint', $cart->fingerprint)
+        ->renderSections();
+
+
+        return response()->json([
+            'content' => $sections['content'],
+        ]); 
+
+    }
 }

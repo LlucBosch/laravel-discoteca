@@ -8,17 +8,17 @@
                         <th>Precio</th>
                         <th>Cantidad</th>
                     </tr>
-            @if(isset($products))
-                @foreach($products as $product)
+            @if(isset($carts))
+                @foreach($carts as $cart)
                     <tr>
                         <td class="desktop-only"><img src="./images/service1.webp" alt=""></td>
-                        <td>{{$product->title}}</td>
-                        <td>{{$product->prices->first()->base_price}} €</td>
+                        <td>{{$cart->price->product->title}}</td>
+                        <td>{{$cart->price->base_price}} €</td>
                         <td>
                             <div class="plus-minus-button">
-                                <button class="minus">−</button>
-                                <input class="plus-minus-input" type="number" value="1" min="1">
-                                <button class="plus">+</button>
+                                <button class="minus" data-url="">−</button>
+                                <input class="plus-minus-input" type="number" value="{{$cart->quantity}}" min="1">
+                                <button class="plus" data-url="{{route('plus', ['fingerprint'=>$fingerprint, 'price_id'=>$cart->price_id])}}">+</button>
                             </div>
                         </td>
                     </tr>
