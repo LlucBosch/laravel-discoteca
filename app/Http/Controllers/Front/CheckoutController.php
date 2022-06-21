@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Front;
 
 use Illuminate\Support\Facades\View;
 use App\Http\Controllers\Controller;
-// use App\Models\Checkout;
-// use App\Http\Requests\Front\CheckoutRequest;
+use App\Models\Checkout;
+use App\Http\Requests\Front\CheckoutRequest;
 
 class CheckoutController extends Controller
 {

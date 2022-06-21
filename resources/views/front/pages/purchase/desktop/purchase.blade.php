@@ -29,22 +29,41 @@
 
             <div class="purchase-resume">
                 <table>
-                    <tr>
-                        <th colspan="2">Resumen de la compra</th>
-                    </tr>
-                    <tr>
-                        <td>IVA</td>
-                        <td>5 €</td>
-                    </tr>
-                    <tr>
-                        <td>Transporte</td>
-                        <td>0 €</td>
-                    </tr>
-                    <tr>
-                        <td class="purchase-resume-total">Total</td>
-                        <td class="purchase-resume-total">55 €</td>
-                    </tr>
+                        <tr>
+                            <th colspan="2">Resumen de la compra</th>
+                        </tr>
+                    @if(isset($carts))        
+                        <tr>
+                            <td>Base Imponible</td>
+                            @php
+                                $base_imponible = 0;
+                            @endphp
+                            @foreach($carts as $cart)
+                                @php
+                                    $total=$cart->price->base_price * $cart->quantity;
+                                    $base_imponible += $total;
+                                @endphp
+                            @endforeach
+                            <td>{{$base_imponible}} €</td>
+                        </tr>
+                        <tr>
+                            <td>IVA</td>
+                            @php
+                                $iva = $base_imponible * $cart->price->tax->multiplicator;
+                            @endphp
+                            <td>{{$iva}} €</td>
+                        </tr>
+                        <tr>
+                            <td class="purchase-resume-total">Total</td>
+                                @php
+                                    $total = $base_imponible + $iva;
+                                @endphp
+                            <td class="purchase-resume-total">{{$total}} €</td>
+                        </tr>
+                    @endif
                 </table>
+
+                    
 
                 <div class="desktop-only">
                     <div class="purchase-resume-buttons">
@@ -63,7 +82,7 @@
                                 </button>
                             </div>
                             <div class="column">
-                                <button>
+                                <button class="go-checkout" data-url="{{route("front_checkout")}}">
                                     <div class="svg-wrapper-1">
                                         <div class="svg-wrapper">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
@@ -74,7 +93,7 @@
                                             </svg>
                                         </div>
                                     </div>
-                                    <span>Comprar</span>
+                                    <span>Pagar</span>
                                 </button>
                             </div>
                         </div>
@@ -94,7 +113,7 @@
                             </div>
                             <span>Volver</span>
                         </button>
-                        <button>
+                        <button class="buttons-menu" data-url="{{route("front_checkout")}}">
                             <div class="svg-wrapper-1">
                                 <div class="svg-wrapper">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
@@ -104,7 +123,7 @@
                                     </svg>
                                 </div>
                             </div>
-                            <span>Comprar</span>
+                            <span>Pagar</span>
                         </button>
                     </div>
                 </div>

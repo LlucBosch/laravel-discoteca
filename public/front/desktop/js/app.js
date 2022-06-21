@@ -110,6 +110,7 @@ var renderCart = function renderCart() {
   var forms = document.querySelectorAll('.front-form');
   var plusButtons = document.querySelectorAll(".plus");
   var minusButtons = document.querySelectorAll(".minus");
+  var goCheckout = document.querySelector('.go-checkout');
   document.addEventListener("renderProductModules", function (event) {
     renderCart();
   }, {
@@ -237,6 +238,57 @@ var renderCart = function renderCart() {
 
         sendNewRequest();
       });
+    });
+  }
+
+  if (goCheckout) {
+    goCheckout.addEventListener("click", function () {
+      var url = goCheckout.dataset.url;
+
+      var sendNewRequest = /*#__PURE__*/function () {
+        var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+          var response;
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+            while (1) {
+              switch (_context3.prev = _context3.next) {
+                case 0:
+                  _context3.next = 2;
+                  return fetch(url, {
+                    headers: {
+                      'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    method: 'GET'
+                  }).then(function (response) {
+                    if (!response.ok) throw response;
+                    return response.json();
+                  }).then(function (json) {
+                    mainContainer.innerHTML = json.content;
+                    document.dispatchEvent(new CustomEvent('renderProductModules'));
+                  })["catch"](function (error) {
+                    if (error.status == '500') {
+                      console.log(error);
+                    }
+
+                    ;
+                  });
+
+                case 2:
+                  response = _context3.sent;
+
+                case 3:
+                case "end":
+                  return _context3.stop();
+              }
+            }
+          }, _callee3);
+        }));
+
+        return function sendNewRequest() {
+          return _ref3.apply(this, arguments);
+        };
+      }();
+
+      sendNewRequest();
     });
   }
 };

@@ -25,3 +25,5 @@ renderFaqs();
 renderfrontProducts();
 renderMenu();
 renderCart();
+
+
