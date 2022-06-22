@@ -16,7 +16,7 @@ class Customer extends Model
 
     public function fingerprints()
     {
-        return $this->hasMany(Fingerprint::class,'fingerprint_id');
+        return $this->hasMany(Fingerprint::class,'customer_id');
     }
 
 }

@@ -55,6 +55,20 @@ Route::group(['prefix' => 'admin'], function () {
         ]
     ]);
 
+    Route::resource('ventas', 'App\Http\Controllers\Admin\SaleController', [
+        'parameters' => [
+            'ventas' => 'sale', 
+        ],
+        'names' => [
+            'index' => 'sales',
+            'create' => 'sales_create',
+            'edit' => 'sales_edit',
+            'store' => 'sales_store',
+            'destroy' => 'sales_destroy',
+            'show' => 'sales_show',
+        ]
+    ]);
+
     Route::resource('clientes', 'App\Http\Controllers\Admin\CustomerController', [
         'parameters' => [
             'clientes' => 'customer', 
@@ -117,7 +131,6 @@ Route::get('/', 'App\Http\Controllers\Front\HomeController@index')->name('front_
 Route::get('/contacto', 'App\Http\Controllers\Front\ContactController@index')->name('front_contact');
 Route::post('/contacto', 'App\Http\Controllers\Front\ContactController@store')->name('contacts_store');
 
-Route::get('/checkout', 'App\Http\Controllers\Front\CheckoutController@index')->name('front_checkout');
 
 Route::get('/faqs', 'App\Http\Controllers\Front\FaqController@index')->name('front_faqs');
 
@@ -131,5 +144,11 @@ Route::get('/tickets/{category}', 'App\Http\Controllers\Front\ProductCategoryCon
 Route::get('/ticket/{product}', 'App\Http\Controllers\Front\ProductController@show')->name('front_product');
 Route::post('/ticketstore', 'App\Http\Controllers\Front\CartController@store')->name('add_cart');
 
-Route::get('/carrito/plus/{fingerprint}/{price_id}', 'App\Http\Controllers\Front\CartController@plus')->name('plus');
+
+Route::get('/checkout/{fingerprint}', 'App\Http\Controllers\Front\CheckoutController@index')->name('front_checkout');
+Route::post('/checkoutstore', 'App\Http\Controllers\Front\CheckoutController@store')->name('fin_checkout');
+
+Route::get('/carrito/plus/{fingerprint}/{price_id}', 'App\Http\Controllers\Front\CartController@plus')->name('plus_cart');
+Route::get('/carrito/minus/{fingerprint}/{price_id}', 'App\Http\Controllers\Front\CartController@minus')->name('minus_cart');
 Route::get('/carrito', 'App\Http\Controllers\Front\CartController@index')->name('front_carrito');
+

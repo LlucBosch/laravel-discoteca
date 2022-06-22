@@ -6,6 +6,7 @@ export let renderCart = () => {
     let plusButtons = document.querySelectorAll(".plus");
     let minusButtons = document.querySelectorAll(".minus");
     let goCheckout = document.querySelector('.go-checkout');
+    let goSaled = document.querySelector('.go-saled');
 
     document.addEventListener("renderProductModules",( event =>{
         renderCart();

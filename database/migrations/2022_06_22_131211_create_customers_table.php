@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('adress');   
             $table->integer('postal_code');   
             $table->string('city');   
-            $table->string('country'); 
             $table->boolean('active');
             $table->timestamps();
         });

@@ -2,20 +2,13 @@
 export let renderForm = () => {
 
     let mainContainer = document.querySelector("main");
-    let storeButton = document.querySelector('.button-save-panel');
+    let storeButton = document.querySelector('.go-saled');
     let forms = document.querySelectorAll('.front-form');
 
-    document.addEventListener("renderFormModules",( event =>{
+    document.addEventListener("renderProductModules",( event =>{
         renderForm();
     }), {once: true});
 
-    document.addEventListener("renderMenu",( event =>{
-        renderMenu();
-    }), {once: true});
-
-    document.addEventListener("renderFilterCategory",( event =>{
-        renderFilterCategory();
-    }), {once: true});
 
     if(storeButton){
 
@@ -58,9 +51,9 @@ export let renderForm = () => {
                     })
                     .then(json => {
 
-                        mainContainer.innerHTML = json.form;
+                        mainContainer.innerHTML = json.content;
 
-                        document.dispatchEvent(new CustomEvent('renderFormModules'));
+                        document.dispatchEvent(new CustomEvent('renderProductModules'));
                     })
                     .catch ( error =>  {
     

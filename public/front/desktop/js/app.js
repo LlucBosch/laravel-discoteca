@@ -111,6 +111,7 @@ var renderCart = function renderCart() {
   var plusButtons = document.querySelectorAll(".plus");
   var minusButtons = document.querySelectorAll(".minus");
   var goCheckout = document.querySelector('.go-checkout');
+  var goSaled = document.querySelector('.go-saled');
   document.addEventListener("renderProductModules", function (event) {
     renderCart();
   }, {
@@ -397,20 +398,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 var renderForm = function renderForm() {
   var mainContainer = document.querySelector("main");
-  var storeButton = document.querySelector('.button-save-panel');
+  var storeButton = document.querySelector('.go-saled');
   var forms = document.querySelectorAll('.front-form');
-  document.addEventListener("renderFormModules", function (event) {
+  document.addEventListener("renderProductModules", function (event) {
     renderForm();
-  }, {
-    once: true
-  });
-  document.addEventListener("renderMenu", function (event) {
-    renderMenu();
-  }, {
-    once: true
-  });
-  document.addEventListener("renderFilterCategory", function (event) {
-    renderFilterCategory();
   }, {
     once: true
   });
@@ -465,8 +456,8 @@ var renderForm = function renderForm() {
                       if (!response.ok) throw response;
                       return response.json();
                     }).then(function (json) {
-                      mainContainer.innerHTML = json.form;
-                      document.dispatchEvent(new CustomEvent('renderFormModules'));
+                      mainContainer.innerHTML = json.content;
+                      document.dispatchEvent(new CustomEvent('renderProductModules'));
                     })["catch"](function (error) {
                       if (error.status == '422') {
                         error.json().then(function (jsonError) {
