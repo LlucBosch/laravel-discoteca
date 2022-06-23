@@ -128,7 +128,7 @@ class CartController extends Controller
     public function minus($fingerprint, $price_id)
     {
 
-        $cart = $this->cart->where('fingerprint', $fingerprint)->where('price_id', $price_id)->first();
+        $cart = $this->cart->where('fingerprint', $fingerprint)->where('price_id', $price_id)->where('active', 1)->first();
         $cart->active = 0;
         $cart->save();
 

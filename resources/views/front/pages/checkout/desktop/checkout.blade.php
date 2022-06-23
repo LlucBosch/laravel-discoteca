@@ -109,15 +109,15 @@
                 </div>
                 <div class="checkout-methods">
                     <div class="checkout-methods-radio">
-                        <input type="radio" name="payment" value="Transferencia Bancaria">
+                        <input type="radio" name="payment_method_id" value="1">
                         <label>Transferencia Bancaria</label>
                     </div>
                     <div class="checkout-methods-radio">
-                        <input type="radio" name="payment" value="Paypal">
+                        <input type="radio" name="payment_method_id" value="2">
                         <label>Paypal</label>
                     </div>
                     <div class="checkout-methods-radio">
-                        <input type="radio" name="payment" value="Tarjeta de crédito">
+                        <input type="radio" name="payment_method_id" value="3">
                         <label>Tarjeta de crédito</label>
                     </div>
                 </div>
@@ -137,5 +137,10 @@
             </div>
         </div>
     </div>
+    <input type="hidden" value="{{$base_total}}" name="total_base_price">
+    <input type="hidden" value="{{$tax_total}}" name="total_tax_price">
+    <input type="hidden" value="{{$total}}" name="total_price">
+    <input type="hidden" value="{{$fingerprint}}" name="fingerprint">
+
 </form>
         

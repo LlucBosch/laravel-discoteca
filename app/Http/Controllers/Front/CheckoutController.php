@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Front;
 
 use Illuminate\Support\Facades\View;
 use App\Http\Controllers\Controller;
-use App\Models\Checkout;
 use App\Models\Cart;
 use App\Models\Customer;
+use App\Models\Sale;
 use Illuminate\Http\Request;
 // use App\Http\Requests\Front\CheckoutRequest;
 use Illuminate\Support\Facades\DB;
@@ -18,11 +18,13 @@ class CheckoutController extends Controller
     protected $checkout;
     protected $cart;
     protected $customer;
+    protected $sale;
     
-    public function __construct(Cart $cart, Customer $customer)
+    public function __construct(Cart $cart, Customer $customer, Sale $sale)
     {
         $this->cart = $cart;
         $this->customer = $customer;
+        $this->sale = $sale;
     }
 
     public function index($fingerprint)
@@ -67,6 +69,16 @@ class CheckoutController extends Controller
             'active' => 1
         ]);
 
+        $sale = $this->sale->create([
+            $customer->id => request('customer_id');
+            'ticket_number' => '123';
+            'total_base_price' => request('total_base_price');
+            'total_tax_price' => request('total_tax_price');
+            'total_price' => request('total_price');
+            'payment_method_id' => request('payment_method_id');
+
+            'active' => 1
+        ]);
         
 
         $sections = View::make('front.pages.saled.index')

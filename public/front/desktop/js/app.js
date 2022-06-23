@@ -242,18 +242,71 @@ var renderCart = function renderCart() {
     });
   }
 
+  if (minusButtons) {
+    minusButtons.forEach(function (minusButton) {
+      minusButton.addEventListener("click", function () {
+        var url = minusButton.dataset.url;
+
+        var sendNewRequest = /*#__PURE__*/function () {
+          var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+            var response;
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+              while (1) {
+                switch (_context3.prev = _context3.next) {
+                  case 0:
+                    _context3.next = 2;
+                    return fetch(url, {
+                      headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                      },
+                      method: 'GET'
+                    }).then(function (response) {
+                      if (!response.ok) throw response;
+                      return response.json();
+                    }).then(function (json) {
+                      mainContainer.innerHTML = json.content;
+                      document.dispatchEvent(new CustomEvent('renderProductModules'));
+                    })["catch"](function (error) {
+                      if (error.status == '500') {
+                        console.log(error);
+                      }
+
+                      ;
+                    });
+
+                  case 2:
+                    response = _context3.sent;
+
+                  case 3:
+                  case "end":
+                    return _context3.stop();
+                }
+              }
+            }, _callee3);
+          }));
+
+          return function sendNewRequest() {
+            return _ref3.apply(this, arguments);
+          };
+        }();
+
+        sendNewRequest();
+      });
+    });
+  }
+
   if (goCheckout) {
     goCheckout.addEventListener("click", function () {
       var url = goCheckout.dataset.url;
 
       var sendNewRequest = /*#__PURE__*/function () {
-        var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
           var response;
-          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
             while (1) {
-              switch (_context3.prev = _context3.next) {
+              switch (_context4.prev = _context4.next) {
                 case 0:
-                  _context3.next = 2;
+                  _context4.next = 2;
                   return fetch(url, {
                     headers: {
                       'X-Requested-With': 'XMLHttpRequest'
@@ -274,18 +327,18 @@ var renderCart = function renderCart() {
                   });
 
                 case 2:
-                  response = _context3.sent;
+                  response = _context4.sent;
 
                 case 3:
                 case "end":
-                  return _context3.stop();
+                  return _context4.stop();
               }
             }
-          }, _callee3);
+          }, _callee4);
         }));
 
         return function sendNewRequest() {
-          return _ref3.apply(this, arguments);
+          return _ref4.apply(this, arguments);
         };
       }();
 
