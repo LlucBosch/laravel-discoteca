@@ -55,28 +55,20 @@ class ProductController extends Controller
          
     }
 
-    public function orderAsc() {
+    public function orderPrice($filter) {
+
+        $products = $this->product
+        ->where('products.active', 1)
+        ->where('products.visible', 1)
+        ->where('prices.valid', 1)
+        ->join('prices', 'prices.product_id', '=', 'products.id')
+        ->orderBy('prices.base_price', $filter)
+        ->get();
 
         $view = View::make('front.pages.tickets.index')
-        ->with('products', $this->product->where('active', 1)->where('visible', 1)->orderBy('price', 'asc')->get());
-
-        if(request()->ajax()) {
-            
-            $sections = $view->renderSections(); 
-    
-            return response()->json([
-                'content' => $sections['content'],
-            ]); 
-        }
-
-        return $view;
-
-    }
-
-    public function orderDesc() {
-
-        $view = View::make('front.pages.tickets.index')
-        ->with('products', $this->product->where('active', 1)->where('visible', 1)->orderBy('price', 'desc')->get());
+        ->with('products', $products)
+        ->with('filter', $filter);
+        
 
         if(request()->ajax()) {
             

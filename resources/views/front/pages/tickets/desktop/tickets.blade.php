@@ -39,8 +39,8 @@
                                     <h4>Filtros</h4>
                                     <select class="filter-price">
                                         <option selected="true" disabled="disabled"></option>
-                                        <option value="{{route('front_product_order_desc')}}">De mayor a menor precio</option>
-                                        <option value="{{route('front_product_order_asc')}}">De menor a mayor precio</option>
+                                        <option value="{{route('front_product_order_price', ['filter' => 'desc'])}}" {{isset($filter) && $filter == 'desc' ? 'selected' : ''}}>De mayor a menor precio</option>
+                                        <option value="{{route('front_product_order_price', ['filter' => 'asc'])}}" {{isset($filter) && $filter == 'asc' ? 'selected' : ''}}>De menor a mayor precio</option>
                                     </select>
                                 </div>
                             </div>
@@ -63,7 +63,11 @@
                                                 {!!$product->description!!}
                                             </div>
                                             <div class="service-price">
-                                                <p>{{$product->prices->first()->base_price}} €</p>
+                                                @if (isset($product->prices->first()->base_price))
+                                                    <p>{{$product->prices->first()->base_price}} €</p>
+                                                @else
+                                                    <p>{{$product->base_price}} €</p>
+                                                @endif
                                             </div>
                                             <div class="service-button-tickets" data-url="{{route('front_product', ['product' => $product->id])}}">
                                                 <h3>COMPRAR</h3>

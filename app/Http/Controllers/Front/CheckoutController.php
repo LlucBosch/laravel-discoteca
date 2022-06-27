@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\DB;
 class CheckoutController extends Controller
 {
 
-    protected $checkout;
     protected $cart;
     protected $customer;
     protected $sale;
@@ -70,15 +69,22 @@ class CheckoutController extends Controller
         ]);
 
         $sale = $this->sale->create([
-            $customer->id => request('customer_id');
-            'ticket_number' => '123';
-            'total_base_price' => request('total_base_price');
-            'total_tax_price' => request('total_tax_price');
-            'total_price' => request('total_price');
-            'payment_method_id' => request('payment_method_id');
-
+            'customer_id' => $customer->id,
+            'date_emission' => date('y-m-d'),
+            'time_emission' => date("H:i:s"),
+            'ticket_number' => '123',
+            'total_base_price' => request('total_base_price'),
+            'total_tax_price' => request('total_tax_price'),
+            'total_price' => request('total_price'),
+            'payment_method_id' => request('payment_method_id'),
             'active' => 1
         ]);
+
+        $cart = $this->cart
+        ->where('fingerprint', request('fingerprint'))
+        ->where('sale_id', null)
+        ->where('active', 1)
+        ->update(['sale_id' => $sale->id]);
         
 
         $sections = View::make('front.pages.saled.index')
