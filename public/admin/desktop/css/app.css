@@ -700,8 +700,41 @@ footer .footer svg {
   width: 100%;
 }
 
+form .purchase-items-admin table {
+  width: 100%;
+  font-size: 1.2rem;
+}
+form .purchase-items-admin table th {
+  color: white;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid white;
+}
+form .purchase-items-admin table td {
+  text-align: center;
+  color: white;
+  padding: 1rem 2rem;
+}
+form .purchase-items-admin table input {
+  width: 1.5rem;
+}
+form .purchase-items-admin table img {
+  width: 5rem;
+}
+form .form-element-ticket {
+  border: 2px solid white;
+  padding-left: 1rem;
+}
+form .form-element-customer {
+  border: 2px solid white;
+  padding-left: 1rem;
+}
 form .form-element {
   margin-bottom: 1rem;
+}
+form .form-element h2 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
 }
 form .form-element .form-element-label {
   margin-bottom: 0.5rem;

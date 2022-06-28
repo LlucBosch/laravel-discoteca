@@ -1,9 +1,57 @@
 form {
 
+    .purchase-items-admin{
+        table{
+            
+            width: 100%;
+            font-size: 1.2rem;
+            
+            th{
+                color: white;
+                padding: 1rem 2rem;
+                border-bottom: 1px solid white;
+            }
+    
+            td{
+                text-align: center;
+                color: white;
+                padding: 1rem 2rem;
+            }
+    
+            input{
+                width: 1.5rem;
+            }
+            
+            img{
+                width: 5rem;
+            }
+        }
+    }
+
+    .form-element-ticket{
+
+        border: 2px solid white;
+        padding-left: 1rem;
+
+    }
+
+    .form-element-customer{
+
+        border: 2px solid white;
+        padding-left: 1rem;
+
+    }
+
     .form-element{
 
         margin-bottom: 1rem;
-    
+
+    h2{
+                text-align: center;
+                margin-bottom: 0.5rem;
+                margin-top: 1rem;
+            }
+            
         .form-element-label{
 
             margin-bottom: 0.5rem;
@@ -11,6 +59,8 @@ form {
             label{
                 font-size: 1.5rem;
             }
+
+            
         } 
         
         .form-element-input{

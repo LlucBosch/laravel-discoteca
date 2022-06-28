@@ -68,11 +68,25 @@ class CheckoutController extends Controller
             'active' => 1
         ]);
 
+        // $date = date('ymd');
+        // $num = $date.str_pad($ticket->num, 6, "0");
+
+       
+            
+   
+        $ticket_number = $this->sale->latest()->first()->ticket_number;
+
+        if(str_contains($ticket_number, date('ymd'))) {
+            $ticket_number += 1;
+        } else { 
+            $ticket_number = date('ymd') . '0001';
+        }
+
         $sale = $this->sale->create([
             'customer_id' => $customer->id,
             'date_emission' => date('y-m-d'),
             'time_emission' => date("H:i:s"),
-            'ticket_number' => '123',
+            'ticket_number' => $ticket_number,
             'total_base_price' => request('total_base_price'),
             'total_tax_price' => request('total_tax_price'),
             'total_price' => request('total_price'),
