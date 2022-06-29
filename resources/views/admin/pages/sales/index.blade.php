@@ -61,13 +61,14 @@
                                 <th>Precio</th>
                                 <th>Cantidad</th>
                             </tr>
-                            @if(isset($sale->carts))
-                                @foreach($sale->carts as $cart)
+
+                            @if(isset($carts))
+                                @foreach($carts as $cart_element)
                                     <tr>
-                                        {{-- <td><img src="{{isset($item->product->image) ? $item->product->image : ''}}" alt=""></td> --}}
-                                        <td>{{isset($cart->price->product->title) ? $cart->price->product->title : ''}}</td>
-                                        <td>{{isset($cart->price->base_price) ? $cart->price->base_price : ''}}</td>
-                                        {{-- <td>{{isset($item->quantity) ? $item->quantity : ''}}</td> --}}
+                                        <td></td>
+                                        <td>{{$cart_element->price->product->name}}</td>
+                                        <td>{{$cart_element->price->base_price}}</td>
+                                        <td>{{$cart_element->quantity}}</td>
                                     </tr>
                                 @endforeach
                             @endif

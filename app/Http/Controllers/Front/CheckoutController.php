@@ -26,11 +26,11 @@ class CheckoutController extends Controller
         $this->sale = $sale;
     }
 
-    public function index($fingerprint)
+    public function index(Request $request)
     {
 
         $totals = $this->cart
-            ->where('carts.fingerprint', $fingerprint)
+            ->where('carts.fingerprint', $request->cookie('fp'))
             ->where('carts.active', 1)
             ->where('carts.sale_id', null)
             ->join('prices', 'prices.id', '=', 'carts.price_id')
@@ -39,7 +39,7 @@ class CheckoutController extends Controller
             ->first();
 
         $view = View::make('front.pages.checkout.index')
-            ->with('fingerprint', $fingerprint)
+            ->with('fingerprint', $request->cookie('fp'))
             ->with('base_total', $totals->base_total)
             ->with('tax_total', ($totals->total - $totals->base_total))
             ->with('total', $totals->total);
@@ -95,10 +95,10 @@ class CheckoutController extends Controller
         ]);
 
         $cart = $this->cart
-        ->where('fingerprint', request('fingerprint'))
+        ->where('fingerprint', $request->cookie('fp'))
         ->where('sale_id', null)
         ->where('active', 1)
-        ->update(['sale_id' => $sale->id]);
+        ->update(['sale_id' => $sale->id, 'customer_id' => $customer->id]);
         
 
         $sections = View::make('front.pages.saled.index')

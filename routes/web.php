@@ -128,6 +128,8 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::get('/', 'App\Http\Controllers\Front\HomeController@index')->name('front_home');
 
+
+
 Route::get('/contacto', 'App\Http\Controllers\Front\ContactController@index')->name('front_contact');
 Route::post('/contacto', 'App\Http\Controllers\Front\ContactController@store')->name('contacts_store');
 
@@ -144,10 +146,11 @@ Route::get('/ticket/{product}', 'App\Http\Controllers\Front\ProductController@sh
 Route::post('/ticketstore', 'App\Http\Controllers\Front\CartController@store')->name('add_cart');
 
 
-Route::get('/checkout/{fingerprint}', 'App\Http\Controllers\Front\CheckoutController@index')->name('front_checkout');
+Route::get('/checkout', 'App\Http\Controllers\Front\CheckoutController@index')->name('front_checkout');
 Route::post('/checkoutstore', 'App\Http\Controllers\Front\CheckoutController@store')->name('fin_checkout');
 
-Route::get('/carrito/plus/{fingerprint}/{price_id}', 'App\Http\Controllers\Front\CartController@plus')->name('plus_cart');
-Route::get('/carrito/minus/{fingerprint}/{price_id}', 'App\Http\Controllers\Front\CartController@minus')->name('minus_cart');
+Route::get('/carrito/plus/{price_id}', 'App\Http\Controllers\Front\CartController@plus')->name('plus_cart');
+Route::get('/carrito/minus/{price_id}', 'App\Http\Controllers\Front\CartController@minus')->name('minus_cart');
 Route::get('/carrito', 'App\Http\Controllers\Front\CartController@index')->name('front_carrito');
 
+Route::post('/fingerprint', 'App\Http\Controllers\Front\FingerprintController@store');

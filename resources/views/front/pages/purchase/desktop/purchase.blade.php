@@ -65,7 +65,7 @@
                                 </button>
                             </div>
                             <div class="column">
-                                <button class="go-checkout" data-url="{{route('front_checkout', ['fingerprint' => $fingerprint])}}">
+                                <button class="go-checkout" data-url="{{route('front_checkout')}}">
                                     <div class="svg-wrapper-1">
                                         <div class="svg-wrapper">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
