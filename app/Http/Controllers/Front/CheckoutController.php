@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\Customer;
 use App\Models\Sale;
+use App\Models\Fingerprint;
 use Illuminate\Http\Request;
 // use App\Http\Requests\Front\CheckoutRequest;
 use Illuminate\Support\Facades\DB;
@@ -18,12 +19,14 @@ class CheckoutController extends Controller
     protected $cart;
     protected $customer;
     protected $sale;
+    protected $fingerprint;
     
-    public function __construct(Cart $cart, Customer $customer, Sale $sale)
+    public function __construct(Cart $cart, Customer $customer, Sale $sale, Fingerprint $fingerprint)
     {
         $this->cart = $cart;
         $this->customer = $customer;
         $this->sale = $sale;
+        $this->fingerprint = $fingerprint;
     }
 
     public function index(Request $request)
@@ -71,7 +74,9 @@ class CheckoutController extends Controller
         // $date = date('ymd');
         // $num = $date.str_pad($ticket->num, 6, "0");
 
-       
+       $fingerprint = $this->fingerprint->where('fingerprint', $request->cookie('fp'))->update([
+            'customer_id' => $customer->id,
+        ]);
             
    
         $ticket_number = $this->sale->latest()->first()->ticket_number;

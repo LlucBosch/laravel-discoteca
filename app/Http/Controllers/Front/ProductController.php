@@ -63,6 +63,7 @@ class ProductController extends Controller
         ->where('prices.valid', 1)
         ->join('prices', 'prices.product_id', '=', 'products.id')
         ->orderBy('prices.base_price', $filter)
+        ->select('products.*', 'prices.base_price')
         ->get();
 
         $view = View::make('front.pages.tickets.index')

@@ -4,7 +4,7 @@ export let renderPlusMinus = () => {
     let minusButtons = document.querySelectorAll(".minus");
     let plusButtons = document.querySelectorAll(".plus");
 
-    document.addEventListener("renderProductModules",( event =>{
+    document.addEventListener("tickets",( event =>{
         renderPlusMinus();
     }), {once: true});
 

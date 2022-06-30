@@ -1,7 +1,6 @@
-import {renderMenuButton} from "./menu-button.js"; 
 import {renderPanelButton} from "./panel-button.js";
 import {renderPanelFilters} from "./panel-filters.js";
-import { renderPlusMinus } from "./plus-minus.js";
+import {renderPlusMinus } from "./plus-minus.js";
 import {renderTabsTicket} from "./tabs-ticket.js";
 import {renderForm} from "./form.js";
 import {notificationTransition} from "./notification.js";
@@ -13,7 +12,6 @@ import {renderMenu} from "./menu.js";
 import {renderCart} from "./cart.js";
 import {renderFingerprint} from "./fingerprint.js";
 
-renderMenuButton();
 renderPanelButton();
 renderPanelFilters();
 renderPlusMinus();

@@ -3,6 +3,12 @@ export let renderFaqs = () => {
     let faqs = document.querySelectorAll(".faq");
     let answers = document.querySelectorAll(".answer")
 
+    document.addEventListener("faqs",( event =>{
+
+            renderFaqs();
+   
+    }),{once: true});
+
     faqs.forEach(faq => {
 
         faq.addEventListener("click", () => {

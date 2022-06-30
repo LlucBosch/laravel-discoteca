@@ -1,60 +1,90 @@
 export let renderMenu = () => {
-
-    let mainContainer = document.querySelector("main");
-    let menuButtons = document.querySelectorAll(".buttons-menu");
-
-    document.addEventListener("renderFormModules",( event =>{
-        renderForm();
-    }), {once: true});
-
-    document.addEventListener("renderMenu",( event =>{
-        renderMenu();
-    }), {once: true});
-
-    document.addEventListener("renderFilterCategory",( event =>{
-        renderFilterCategory();
-    }), {once: true});
-
-    if(menuButtons){
-
-        menuButtons.forEach(menuButton => {
-
-            menuButton.addEventListener("click", () => {
     
-                let url = menuButton.dataset.url;
+    let mainContent = document.querySelector('main');
+    let menuButtons = document.querySelectorAll('.buttons-menu');
 
-                let sendNewRequest = async () => {
-                    
-                    let response = await fetch(url, {
-                        headers: {
-                            'X-Requested-With': 'XMLHttpRequest',
-                        },
-                        method: 'GET', 
-                    })
-                    .then(response => {
-                                  
-                        if (!response.ok) throw response;
+    menuButtons.forEach(menuButton => {
 
-                        return response.json();
-                    })
-                    .then(json => {
+        menuButton.addEventListener('click', () => {
+                
+            let url = menuButton.dataset.url;
+            let section = menuButton.dataset.section;
+            let currentSection = document.querySelector('.page-section').id;
+            sessionStorage.setItem('lastSection', currentSection);
 
-                        mainContainer.innerHTML = json.content;
-
-                        document.dispatchEvent(new CustomEvent('renderMenu'));
-
-                    })
-                    .catch(error =>  {
-        
-                        if(error.status == '500'){
-                            console.log(error);
-                        };
-                    });
-                };
+            let sendIndexRequest = async () => {
     
-                sendNewRequest();
+                let response = await fetch(url, {
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                    },
+                    method: 'GET'
+                })
+                .then(response => {
+
+                    if (!response.ok) throw response;
+
+                    return response.json();
+                })
+                .then(json => {
+                    window.history.pushState('', '', url);
+                    mainContent.innerHTML = json.content;
+
+                    document.dispatchEvent(new CustomEvent(section));
+                })
+                .catch ( error =>  {
+
+                    if(error.status == '500'){
+                        console.log(error);
+                    }
+
+                });
+            }
+            sendIndexRequest();
+        });
+    });
+
+    window.addEventListener('popstate', event => {
+
+        let url = window.location.href;
+
+        let sendIndexRequest = async () => {
+
+            let response = await fetch(url, {
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                },
+                method: 'GET'
+            })
+            .then(response => {
+
+                if (!response.ok) throw response;
+
+                return response.json();
+            })
+            .then(json => {
+
+                mainContent.innerHTML = json.content;
+
+                document.dispatchEvent(new CustomEvent('loadSection', {
+                    detail: {
+                        section: sessionStorage.getItem('lastSection')
+                    }
+                }));
+
+                let currentSection = document.querySelector('.page-section').id;
+                sessionStorage.setItem('lastSection', currentSection);
+            })
+            .catch ( error =>  {
+
+                if(error.status == '500'){
+                    console.log(error);
+                }
 
             });
-        });
-    }  
-};
+        }
+
+        sendIndexRequest();
+        
+    });
+}

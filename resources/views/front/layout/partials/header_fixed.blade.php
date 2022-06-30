@@ -22,9 +22,9 @@
                     <div class="header-main-menu">
                         <div class="desktop-only">
                         <ul>
-                            <li class="buttons-menu" data-url="{{route("front_home")}}"><a>INICIO</a></li>
-                            <li class="buttons-menu" data-url="{{route("front_tickets")}}"><a>ENTRADAS</a></li>
-                            <li class="buttons-menu" data-url="{{route("front_contact")}}"><a>CONTACTO</a></li>
+                            <li class="buttons-menu" data-section="home" data-url="{{route("front_home")}}"><a>INICIO</a></li>
+                            <li class="buttons-menu" data-section="tickets" data-url="{{route("front_tickets")}}"><a>ENTRADAS</a></li>
+                            <li class="buttons-menu" data-section="contact" data-url="{{route("front_contact")}}"><a>CONTACTO</a></li>
                         </ul>
                         </div>
                         <div class="mobile-only">

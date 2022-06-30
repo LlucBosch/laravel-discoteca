@@ -3,6 +3,8 @@ export let renderPanelFilters = () => {
     let buttonFilters = document.getElementById("buttonFilters");
     let filtersList = document.getElementById("filtersList");
 
+    
+
     if(buttonFilters){
         buttonFilters.addEventListener("click", () => {
 

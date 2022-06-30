@@ -4,7 +4,7 @@ export let renderTabsTicket = () => {
     let tabs = document.querySelectorAll(".tab");
     let tabRelateds = document.querySelectorAll(".tab-related");
 
-    document.addEventListener("renderProductModules",( event =>{
+    document.addEventListener("tickets",( event =>{
         renderTabsTicket();
     }), {once: true});
 

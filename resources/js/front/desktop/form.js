@@ -2,13 +2,20 @@
 export let renderForm = () => {
 
     let mainContainer = document.querySelector("main");
-    let storeButton = document.querySelector('.go-saled');
+    let storeButton = document.querySelector('.store-button');
     let forms = document.querySelectorAll('.front-form');
 
-    document.addEventListener("renderProductModules",( event =>{
+    document.addEventListener("contact",( event =>{
+        
         renderForm();
-    }), {once: true});
 
+    }),{once: true});
+
+    document.addEventListener("checkout",( event =>{
+        
+        renderForm();
+
+}),{once: true});
 
     if(storeButton){
 
@@ -53,7 +60,8 @@ export let renderForm = () => {
 
                         mainContainer.innerHTML = json.content;
 
-                        document.dispatchEvent(new CustomEvent('renderProductModules'));
+                        document.dispatchEvent(new CustomEvent('contact'));
+                        document.dispatchEvent(new CustomEvent('checkout'));
                     })
                     .catch ( error =>  {
     

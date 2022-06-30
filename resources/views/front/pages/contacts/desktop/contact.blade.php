@@ -1,4 +1,5 @@
-<form class="front-form" data-url="{{route('contacts_store')}}"> 
+<div class="page-section" id="contact">
+    <form class="front-form" data-url="{{route('contacts_store')}}"> 
             <div class="contact">
                 <div class="desktop-two-columns mobile-one-column">
                     <div class="column">
@@ -91,7 +92,7 @@
                                     </div>
                                 </div>
                                 <div class="form-send-button">
-                                    <button class="button-save-panel" data-url="{{route('contacts_store')}}">
+                                    <button class="store-button" data-url="{{route('contacts_store')}}">
                                         <div class="svg-wrapper-1">
                                           <div class="svg-wrapper">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
@@ -108,4 +109,6 @@
                     </div>
                 </div>
             </div>
-</form>            
+    </form>      
+</div>
+      
